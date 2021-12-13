@@ -1,0 +1,17 @@
+<app-universal-view>
+    <div class="row" style="padding-top: 15px;">
+        <div class="col-10 offset-1">
+            <div class="card card-light">
+              <div class="card-header">
+                <h3 class="card-title font_geo large_font"> მაღაზიების სია </h3>
+              </div>
+              <!-- <form role="form"> -->
+                <div class="card-body">
+                    <app-table *ngIf="tableData.data.length > 0" [data]="tableData"></app-table>
+                </div>
+              <!-- </form> -->
+              <div class="card-footer"> </div>
+            </div>
+        </div>
+    </div>
+</app-universal-view>

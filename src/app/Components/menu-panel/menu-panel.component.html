@@ -1,0 +1,207 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <app-logo></app-logo>
+    <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img [src]="avatar" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="javascript:void(null);" class="d-block font_geo small_font" (click)="userProfile()"> {{ user }} </a>
+        </div>
+      </div>
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item font_geo fs_md">
+            <a href="javascript:void(null);" class="nav-link" (click)="changeRoute('/')">
+              <i class="nav-icon fas fa-home"></i>
+              <p>
+                მთავარი
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-header font_geo fs_lg"> მაღაზია </li>
+          <li class="nav-item has-treeview font_geo fs_md" id="stores" [ngClass]="{'menu-open': isActive('store/add') || isActive('store') || isActive('store/logs') || isActive('storeBranch/add') || isActive('storeBranch')}">
+            <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('stores')">
+              <i class="nav-icon fas fa-store-alt"></i>
+              <p> მაღაზია <i class="fas fa-angle-left right"></i> </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('addStore')" class="nav-link" [ngClass]="{'active': isActive('store/add')}">
+                  <i *ngIf="!isActive('store/add')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('store/add')" class="far fa-dot-circle nav-icon"></i>
+                  <p>დამატება</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('storesList')" class="nav-link" [ngClass]="{'active': isActive('store')}">
+                  <i *ngIf="!isActive('store')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('store')" class="far fa-dot-circle nav-icon"></i>
+                  <p>სია</p>
+                </a>
+              </li>
+              <li class="nav-item has-treeview font_geo fs_md" id="storeBranches" [ngClass]="{'menu-open': isActive('storeBranch/add') || isActive('storeBranch')}">
+                <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('storeBranches')">
+                  <i *ngIf="!isActive('stores')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('stores')" class="far fa-dot-circle nav-icon"></i>
+                  <p> ფილიალები <i class="fas fa-angle-left right"></i> </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="javascript:void(null);" (click)="changeRoute('addStoreBranch')" class="nav-link" [ngClass]="{'active': isActive('storeBranch/add')}">
+                      <i *ngIf="!isActive('storeBranch/add')" class="far fa-circle nav-icon"></i>
+                      <i *ngIf="isActive('storeBranch/add')" class="far fa-dot-circle nav-icon"></i>
+                      <p>დამატება</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="javascript:void(null);" (click)="changeRoute('storeBranchsList')" class="nav-link" [ngClass]="{'active': isActive('storeBranch')}">
+                      <i *ngIf="!isActive('storeBranch')" class="far fa-circle nav-icon"></i>
+                      <i *ngIf="isActive('storeBranch')" class="far fa-dot-circle nav-icon"></i>
+                      <p>სია</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-header font_geo fs_lg"> პროდუქცია </li>
+          <li class="nav-item has-treeview font_geo fs_md" id="layout" [ngClass]="{'menu-open': isActive('products/add') || isActive('products') || isActive('products/logs')}">
+            <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('layout')">
+              <i class="nav-icon fas fa-sitemap"></i>
+              <p> პროდუქცია <i class="fas fa-angle-left right"></i> </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('addProduct')" class="nav-link" [ngClass]="{'active': isActive('products/add')}">
+                  <i *ngIf="!isActive('products/add')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('products/add')" class="far fa-dot-circle nav-icon"></i>
+                  <p>დამატება</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('productList')" class="nav-link" [ngClass]="{'active': isActive('products')}">
+                  <i *ngIf="!isActive('products')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('products')" class="far fa-dot-circle nav-icon"></i>
+                  <p>სია</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('productLogs')" class="nav-link" [ngClass]="{'active': isActive('products/logs')}">
+                  <i *ngIf="!isActive('products/logs')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('products/logs')" class="far fa-dot-circle nav-icon"></i>
+                  <p>აქტივები</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- <li class="nav-item has-treeview font_geo fs_md" id="uiElenents" [ngClass]="{'menu-open': isActive('sections/add') || isActive('sections')}">
+            <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('uiElenents')">
+              <i class="nav-icon fas fa-clipboard-list"></i>
+              <p>
+                სექციები
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('addSection')" class="nav-link" [ngClass]="{'active': isActive('sections/add')}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>დამატება</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('sectionList')" class="nav-link" [ngClass]="{'active': isActive('sections')}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>სია</p>
+                </a>
+              </li>
+            </ul>
+          </li> -->
+          <li class="nav-header font_geo fs_lg">სტაფი</li>
+          <li class="nav-item has-treeview menu-open font_geo fs_md" id="dashboard" [ngClass]="{'menu-open': isActive('users/register') || isActive('users')}">
+            <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('dashboard')">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                თანამშრომლები
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('addUser')" class="nav-link" [ngClass]="{'active': isActive('users/register')}">
+                  <i *ngIf="!isActive('users/register')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('users/register')"  class="far fa-dot-circle nav-icon"></i>
+                  <p>დამატება</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('userList')" class="nav-link" [ngClass]="{'active': isActive('users')}">
+                  <i *ngIf="!isActive('users')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('users')" class="far fa-dot-circle nav-icon"></i>
+                  <p>სია</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-header font_geo fs_lg"> მომწოდებლები </li>
+          <li class="nav-item has-treeview menu-open font_geo fs_md" id="charts" [ngClass]="{'menu-open': isActive('companies/add') || isActive('companies')}">
+            <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('charts')">
+              <i class="nav-icon fas fa-building"></i>
+              <p>
+                კომპანიები
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('addCompany')" class="nav-link" [ngClass]="{'active': isActive('companies/add')}">
+                  <i *ngIf="!isActive('companies/add')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('companies/add')" class="far fa-dot-circle nav-icon"></i>
+                  <p>დამატება</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('CompanyList')" class="nav-link" [ngClass]="{'active': isActive('companies')}">
+                  <i *ngIf="!isActive('companies')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('companies')" class="far fa-dot-circle nav-icon"></i>
+                  <p>სია</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-header font_geo fs_lg"> მიზეზები </li>
+          <li class="nav-item has-treeview menu-open font_geo fs_md" id="reasons" [ngClass]="{'menu-open': isActive('reasons/add') || isActive('reasons')}">
+            <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('reasons')">
+              <i class="nav-icon fas fa-building"></i>
+              <p>
+                მიზეზები
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('addReason')" class="nav-link" [ngClass]="{'active': isActive('reasons/add')}">
+                  <i *ngIf="!isActive('reasons/add')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('reasons/add')" class="far fa-dot-circle nav-icon"></i>
+                  <p>დამატება</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('ReasonsList')" class="nav-link" [ngClass]="{'active': isActive('reasons')}">
+                  <i *ngIf="!isActive('reasons')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('reasons')" class="far fa-dot-circle nav-icon"></i>
+                  <p>სია</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  <!-- /.sidebar-menu -->
+</aside>

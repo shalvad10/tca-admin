@@ -1,0 +1,22 @@
+<div class="card-body table-responsive p-0" [ngStyle]="{'height': tableHeight}">
+  <table class="table table-hover table-head-fixed text-nowrap">
+    <thead style="z-index: 2;">
+      <tr>
+        <th> Avatar </th>
+        <th> სახელი </th>
+        <th> გვარი </th>
+        <!-- <th> დრო </th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of data">
+        <td> 
+          <img [src]="getAvatar(data.user.avatar)" class="img-circle elevation-2" alt="User Avatar">
+        </td>
+        <td> {{ data.user.firstName }} </td>
+        <td> {{ data.user.lastName }} </td>
+        <!-- <td> {{ data.loginDate }} </td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>

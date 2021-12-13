@@ -1,0 +1,40 @@
+<div class="lockscreen-wrapper">
+    <div class="lockscreen-logo">
+      <a href="javascript::void()"><b>Terms</b> Control</a>
+    </div>
+    <!-- User name -->
+    <div class="lockscreen-name"> {{ username }} </div>
+
+    <!-- START LOCK SCREEN ITEM -->
+    <div class="lockscreen-item">
+      <!-- lockscreen image -->
+      <div class="lockscreen-image">
+        <img [src]="Avatar" alt="User Image">
+      </div>
+      <!-- /.lockscreen-image -->
+
+      <!-- lockscreen credentials (contains the form) -->
+      <div class="lockscreen-credentials">
+        <div class="input-group">
+          <input type="password" class="form-control" placeholder="password" [(ngModel)]="password">
+
+          <div class="input-group-append">
+            <button type="button" class="btn" (click)="authenticate()"><i class="fas fa-arrow-right text-muted"></i></button>
+          </div>
+        </div>
+      </div>
+      <!-- /.lockscreen credentials -->
+
+    </div>
+    <!-- /.lockscreen-item -->
+    <div class="help-block text-center font_geo small_font">
+      სისტემაში შესასვლელად, შეიყვანეთ პაროლი
+    </div>
+    <div class="text-center font_geo large_font">
+      <a href="javascript::void()" (click)="login()">ან გაიარეთ ავტორიზაცია</a>
+    </div>
+    <!-- <div class="lockscreen-footer text-center">
+      Copyright &copy; 2014-2019 <b><a href="http://adminlte.io" class="text-black">AdminLTE.io</a></b><br>
+      All rights reserved
+    </div> -->
+  </div>

@@ -1,0 +1,28 @@
+<div class="card-body table-responsive p-0" [ngStyle]="{'height': tableHeight}">
+  <table class="table table-hover table-head-fixed text-nowrap">
+    <thead style="z-index: 2;">
+      <tr>
+        <th> ID </th>
+        <th> საიდ.კოდი </th>
+        <th> სახელი </th>
+        <th> მისამართი </th>
+        <th> მაღაზია </th>
+        <th> <div class="action"></div> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of tableData">
+      <!-- <tr *ngFor="let data of tableData"> -->
+        <td> {{ data.id }} </td>
+        <td [attr.data-tooltip]="tooltipText('საიდენტიფიკაციო კოდი')"> {{ data.identificationCode }} </td>
+        <td class="name" (click)="openStore(data.id)"> {{ data.name }} </td>
+        <td> {{ data.location }} </td>
+        <td> {{ data.magazine.name }} </td>
+        <td>
+          <div class="option bin" (click)="delete(data.id, data.name)"></div>
+          <div class="option edit" (click)="edit(data.id)"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

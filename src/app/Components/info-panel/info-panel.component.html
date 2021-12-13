@@ -1,0 +1,11 @@
+<div class="info-box custom-height" [ngClass]="status" [attr.data-tooltip]="percentage + '%'">
+  <span class="info-box-icon"><i class="fas fa-question-circle"></i></span>
+  <div class="info-box-content">
+    <span class="info-box-text">{{ name }}</span>
+    <span class="info-box-number">{{ expireDate}}</span>
+    <div class="progress">
+      <div class="progress-bar"[ngStyle]="{'width': percentage + '%'}"></div>
+    </div>
+    <span class="progress-description"> დარჩენილია {{ daysRemaining }} დღე </span>
+  </div>
+</div>

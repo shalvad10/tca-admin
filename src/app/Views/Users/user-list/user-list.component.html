@@ -1,0 +1,21 @@
+<app-universal-view>
+    <section class="content" *ngIf="dataLoaded">
+        <div class="card card-solid">
+          <div class="card-body pb-0">
+            <div class="row d-flex align-items-stretch">
+              <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch" *ngFor="let user of users">
+                  <app-user-card
+                  class="sz"
+                  [firstName]="user.firstName"
+                  [lastName]="user.lastName"
+                  [storeName]="user.magazineBranch"
+                  [position]="user.position"
+                  [avatar]="user.avatar"
+                  [id]="user.id"
+                  ></app-user-card>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </section>
+</app-universal-view>

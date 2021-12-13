@@ -1,0 +1,3 @@
+<router-outlet *ngIf="appLoaded"></router-outlet>
+<app-modal *ngIf="modal !== ''" [modal]="modalParams"></app-modal>
+<app-loader *ngIf="isLoading"></app-loader>

@@ -1,0 +1,132 @@
+<app-universal-view>
+  <div class="container-fluid" *ngIf="dataLoaded">
+      <div class="row">
+        <div class="col-12">
+          <section class="content">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">პეოდუქტის დეტალები</h3>
+              </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-12 order-2">
+                            <div class="row custom-margin">
+                              <div class="col-12 col-sm-3">
+                                  <div class="info-box bg-light">
+                                    <div class="info-box-content">
+                                      <span class="info-box-text text-center text-muted">ჩანაწერების რაოდენობა</span>
+                                      <span class="info-box-number text-center text-muted mb-0"> {{ products.length }} </span>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-12 col-sm-3">
+                                  <div class="info-box bg-light">
+                                    <div class="info-box-content">
+                                      <span class="info-box-text text-center text-muted"> გასაფრთხილებელი პროდუქცია </span>
+                                      <span class="info-box-number text-center text-muted mb-0">  {{ warningItemsCount }} </span>
+                                    </div>
+                                  </div>
+                              </div>
+                                <div class="col-12 col-sm-3">
+                                    <div class="info-box bg-light">
+                                      <div class="info-box-content">
+                                        <span class="info-box-text text-center text-muted">ამოღებული პროდუქცია</span>
+                                        <span class="info-box-number text-center text-muted mb-0">0</span>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-3">
+                                    <div class="info-box bg-light">
+                                      <div class="info-box-content">
+                                        <span class="info-box-text text-center text-muted">ახალი დამატებული</span>
+                                        <span class="info-box-number text-center text-muted mb-0">0</span>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row custom-margin">
+                                <div class="col-12">
+                                    <span class="font_geo large_font"> პროდუქცის ცხრილი </span>
+                                    <app-products-table [data]="products" [storeView]="isStore" [height]="height"></app-products-table>
+                                </div>
+                            </div>
+                            <!-- <div class="row custom-margin">
+                                <div class="col-12">
+                                  <h4> ბოლო ქმედებები </h4>
+                                    <div class="post">
+                                      <div class="user-block">
+                                        <img class="img-circle img-bordered-sm" src="../../../assets/img/avatar.svg" alt="user image">
+                                        <span class="username"> <a href="#">უცხო მოყმე</a> </span>
+                                        <span class="description">დრო - დღეს 17:45</span>
+                                      </div>
+                                      <p> ამოიღო გაყიდული პროდუქტი </p>
+                                    </div>
+                
+                                    <div class="post clearfix">
+                                      <div class="user-block">
+                                        <img class="img-circle img-bordered-sm" src="../../../assets/img/avatar.svg" alt="user image">
+                                        <span class="username">
+                                          <a href="#">უცხო მოყმე</a>
+                                        </span>
+                                        <span class="description">დრო - 3 days ago</span>
+                                      </div>
+                                      <p> დაამატა ახალი პროდუქტი </p>
+                                    </div>
+                
+                                    <div class="post">
+                                      <div class="user-block">
+                                        <img class="img-circle img-bordered-sm" src="../../../assets/img/avatar.svg" alt="user image">
+                                        <span class="username">
+                                          <a href="#"> უცხო მოყმე </a>
+                                        </span>
+                                        <span class="description">დრო - 5 დღის წინ</span>
+                                      </div>
+                                      <p> ამოიღო ვადაგასული პროდუქტი</p>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="col-12 col-md-12 order-1">
+                            <h3 class="text-primary"><i class="fas fa-paint-brush"></i> კოკა-კოლა 2ლ. </h3>
+                            <!-- <p class="text-muted">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p> -->
+                            <br>
+                            <div class="text-muted">
+                              <p class="text-sm"> შემომტანი კომპანია
+                                <b class="d-block">{{ company }}</b>
+                              </p>
+                              <p class="text-sm">პროდუქციის კატეგორია
+                                <b class="d-block">{{ section }}</b>
+                              </p>
+                            </div>
+        
+                            <!-- <h5 class="mt-5 text-muted">Project files</h5>
+                            <ul class="list-unstyled">
+                              <li>
+                                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a>
+                              </li>
+                              <li>
+                                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
+                              </li>
+                              <li>
+                                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> Email-from-flatbal.mln</a>
+                              </li>
+                              <li>
+                                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
+                              </li>
+                              <li>
+                                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
+                              </li>
+                            </ul>
+                            <div class="text-center mt-5 mb-3">
+                              <a href="#" class="btn btn-sm btn-primary">Add files</a>
+                              <a href="#" class="btn btn-sm btn-warning">Report contact</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</app-universal-view>

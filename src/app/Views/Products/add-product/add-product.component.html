@@ -1,0 +1,42 @@
+<app-universal-view>
+    <div class="row" style="padding-top: 15px;">
+        <div class="col-10 offset-1">
+            <div class="card card-light">
+              <div class="card-header">
+                <h3 class="card-title font_geo large_font">პროდუქტის დამატება</h3>
+              </div>
+              <!-- <form role="form"> -->
+                <div class="card-body">
+                    <div class="form-group font_geo medium_font">
+                      <label>შტრიხკოდი</label>
+                      <input type="text" class="form-control" placeholder="პროდუქტის შტრიხკოდი" [(ngModel)]="barCode">
+                      <span class="validation" *ngIf="!(barCode.length > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        შეიყვანეთ პროდუქციის შტრიხკოდი.
+                      </span>
+                    </div>
+                    <div class="form-group font_geo medium_font">
+                      <label>სახელი</label>
+                      <input type="text" class="form-control" placeholder="პროდიქტის დასახელება" [(ngModel)]="name">
+                      <span class="validation" *ngIf="!(name.length > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        შეიყვანეთ პროდუქციის დასახელება.
+                      </span>
+                    </div>
+                    <div class="form-group font_geo medium_font">
+                      <label>კომპანია</label>
+                      <ng-select [items]="companies" bindLabel="name"  bindValue="id" [(ngModel)]="selectedCompanyID"></ng-select>
+                      <span class="validation" *ngIf="!(selectedCompanyID > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        აირჩიეთ შემომტანი კომპანია.
+                      </span>
+                    </div>
+                </div>
+              <!-- </form> -->
+              <div class="card-footer">
+                <button type="button" [ngClass]="{'disabled': !(selectedCompanyID > 0 && name.length > 0 && barCode.length > 0) && showWarnings}" class="btn btn-primary font_geo small_font" (click)="send()"> დამატება </button>
+              </div>
+            </div>
+        </div>
+    </div>
+  </app-universal-view>

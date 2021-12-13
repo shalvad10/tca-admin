@@ -1,0 +1,12 @@
+<div class="content" *ngIf="dataLoaded">
+    <div class="row">
+        <!-- <select (change)="selectChange($event)" class="select">
+            <option *ngFor="let user of users" [value]="user.id"> {{ getUser(user) }} </option>
+        </select> -->
+        <ng-select [items]="users" bindLabel="name"  bindValue="id" class="dropdown"  [(ngModel)]="selected"></ng-select>
+    </div>
+      <div class="row btnRow">
+        <div class="btn btn-success font_geo medium_font" (click)="confirm()"> დადასტურება </div>
+        <div class="btn btn-danger font_geo medium_font" (click)="deny()"> უარყოფა </div>
+      </div>
+  </div>

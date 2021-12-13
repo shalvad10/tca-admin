@@ -1,0 +1,25 @@
+<div class="content">
+
+  <div class="row">
+    <span class="font_geo medium_font"> აირჩიეთ პროდუქტის ამოღების მიზეზი </span>
+  </div>
+
+  <div class="row">
+    <div class="form-group font_geo medium_font">
+      <ng-select class="select" [items]="reasons" bindLabel="name"  bindValue="id" [(ngModel)]="selected"></ng-select>
+    </div>
+    <!-- <select (change)="makeChanges('select',$event)" class="select font_geo small_font">
+      <option *ngFor="let reason of reasons" [value]="reason.id"> {{ reason.name }} </option>
+    </select> -->
+  </div>
+
+  <div class="row">
+    <input class="font_geo medium_font" type="text" name="quantity" id="quantity" placeholder="ამოსაღები პროდუქტის რაოდენობა" (input)="makeChanges('input',$event)">
+  </div>
+
+  <div class="row buttons">
+    <div class="btn btn-success font_geo medium_font" (click)="confirm()"> დადასტურება </div>
+    <div class="btn btn-danger font_geo medium_font" (click)="deny()"> დაბრუნება </div>
+  </div>
+
+</div>

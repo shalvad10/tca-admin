@@ -1,0 +1,65 @@
+<div class="card-body table-responsive p-0" [ngStyle]="{'height': tableHeight}" *ngIf="dataLoaded">
+  <table *ngIf="storeView" class="table table-hover table-head-fixed text-nowrap">
+    <thead style="z-index: 2;">
+      <tr>
+        <!-- <th> ID </th> -->
+        <th> შტრიხკოდი </th>
+        <th> სახელი </th>
+        <th> კომპანია </th>
+        <th> მიღება </th>
+        <th> ვარგისია </th>
+        <th> გაფთხილება </th>
+        <th> რაოდენობა </th>
+        <th> პროგრესბარი </th>
+        <th> <div class="action"></div> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of data">
+        <!-- <td> {{ data.itemID }} </td> -->
+        <td> {{ data.identificationCode }} </td>
+        <td class="name" (click)="openProduct(data.id)"> {{ data.name }} </td>
+        <td> {{ getCompanyName(data.companyId) }} </td>
+        <td> {{ parseDate(data.startDate) }} </td>
+        <td> {{ parseDate(data.endDate) }} </td>
+        <td> {{ parseWarningDate(data.warningDate) }} </td>
+        <td> {{ data.quantity }} </td>
+        <td class="initial" [attr.data-tooltip]="tooltipText(data)">
+          <div class="progress progress-sm">
+            <div class="progress-bar" [ngClass]="getStatus(data)" [ngStyle]="{width: getStyle(data)}"></div>
+          </div>
+        </td>
+        <td>
+          <div class="option bin" (click)="delete(data)"></div>
+          <!-- <div class="option edit" (click)="edit(data.itemID)"></div> -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table *ngIf="!storeView" class="table table-hover table-head-fixed text-nowrap">
+    <thead style="z-index: 2;">
+      <tr>
+        <th> შტრიხკოდი </th>
+        <th> სახელი </th>
+        <th> კომპანია </th>
+        <th> <div class="action"></div> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of data">
+        <td> {{ data.identificationCode }} </td>
+        <td> {{ data.name }} </td>
+        <td> {{ data.company.name }} </td>
+        <!-- <td class="initial" [attr.data-tooltip]="tooltipText(data)">
+          <div class="progress progress-xs">
+            <div class="progress-bar" [ngClass]="getStatus(data)" [ngStyle]="{width: getStyle(data)}"></div>
+          </div>
+        </td> -->
+        <td>
+          <div class="option bin" (click)="delete(data)"></div>
+          <div class="option edit" (click)="edit(data.id)"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

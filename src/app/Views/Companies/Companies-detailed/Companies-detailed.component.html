@@ -1,0 +1,71 @@
+<app-universal-view *ngIf="dataLoaded">
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <section class="content">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title font_geo medium_font">კომპანიის დეტალური ინფორმაცია</h3>
+              </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-12 order-2">
+                            <div class="row custom-margin">
+                              <!-- <div class="col-12 col-sm-3">
+                                  <div class="info-box bg-light">
+                                    <div class="info-box-content">
+                                      <span class="info-box-text text-center text-muted">პროდუქციის რაოდენობა</span>
+                                      <span class="info-box-number text-center text-muted mb-0">45</span>
+                                    </div>
+                                  </div>
+                              </div> -->
+                              <div class="col-12 col-sm-3">
+                                  <div class="info-box bg-light">
+                                    <div class="info-box-content">
+                                      <span class="info-box-text text-center text-muted">პროდუქციის რაოდენობა</span>
+                                      <span class="info-box-number text-center text-muted mb-0">{{ data.products.length }}</span>
+                                    </div>
+                                  </div>
+                              </div>
+                                <!-- <div class="col-12 col-sm-3">
+                                    <div class="info-box bg-light">
+                                      <div class="info-box-content">
+                                        <span class="info-box-text text-center text-muted">გაფრთხილების დღეები</span>
+                                        <span class="info-box-number text-center text-muted mb-0"> {{ data.days }} </span>
+                                      </div>
+                                    </div>
+                                </div> -->
+                                <!-- <div class="col-12 col-sm-3">
+                                    <div class="info-box bg-light">
+                                      <div class="info-box-content">
+                                        <span class="info-box-text text-center text-muted">ახალი მიღებული</span>
+                                        <span class="info-box-number text-center text-muted mb-0">13</span>
+                                      </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row custom-margin">
+                              <div class="col-12">
+                                  <app-products-small-table [data]="data.products" [companyName]="data.name"></app-products-small-table>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-12 order-1">
+                            <h3 class="text-primary font_geo"><i class="fas fa-store-alt"></i> {{ data.name }} </h3>
+                            <br>
+                            <div class="text-muted">
+                              <p class="font_geo small_font danger_text"> ვადის გასვლამდე <span class="large_font text-primary">{{ data.days }}</span> დღით ადრე უნდა მოხდეს კომპანიის ინფორმირება.
+                              </p>
+                              <!-- <p class="text-sm font_geo">საკონტაქტო:
+                                <b class="d-block">Tony Chicken</b>
+                              </p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</app-universal-view>

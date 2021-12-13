@@ -1,0 +1,47 @@
+<app-universal-view>
+  <div class="container-fluid">
+    <section class="content">
+        <div class="card card-solid">
+          <div class="card-header">
+            <h3 class="card-title font_geo large_font">კომპანიის დამატება</h3>
+          </div>
+          <!-- <form role="form"> -->
+            <div class="card-body">
+                <div class="form-group font_geo medium_font">
+                  <label>სახელი</label>
+                  <input type="text" class="form-control small_font" placeholder="კომპანიის დასახელება" [(ngModel)]="companyName">
+                  <span class="validation" *ngIf="!(companyName.length > 0) && showWarnings">
+                    <i class="fas fa-exclamation"></i>
+                    შეიყვანეთ კომპანიის დასახელება.
+                  </span>
+                </div>
+                <div class="form-group font_geo medium_font">
+                  <label>კოდი</label>
+                  <input type="text" class="form-control small_font" placeholder="საინდეტიფიკაციო კოდი" [(ngModel)]="companyCode">
+                  <span class="validation" *ngIf="!(companyCode.length > 0) && showWarnings">
+                    <i class="fas fa-exclamation"></i>
+                    შეიყვანეთ კომპანიის საიდენტიფიკაციო კოდი.
+                  </span>
+                </div>
+                <div class="form-group font_geo medium_font">
+                  <label> გაფრთხილების ინტერვალი </label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> დღე </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="რამდენი დღით ადრე უნდა იქნეს კომპანია გაფრთხილებული?" [(ngModel)]="days">
+                  </div>
+                  <span class="validation" *ngIf="!(days > 0) && showWarnings">
+                    <i class="fas fa-exclamation"></i>
+                    შეიყვანეთ დღეების რაოდენობა, რამდენი დღით ადრე უნდა იქნეს კომპანია გაფრთხილებული?
+                  </span>
+                </div>
+            </div>
+          <!-- </form> -->
+          <div class="card-footer">
+            <button type="button" [ngClass]="{'disabled': !(companyCode.length > 0 && companyName.length > 0) && showWarnings}" class="btn btn-primary font_geo small_font" (click)="addCompany()"> {{ text }} </button>
+          </div>
+        </div>  
+      </section>
+  </div>
+  </app-universal-view>

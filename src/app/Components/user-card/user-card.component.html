@@ -1,0 +1,27 @@
+<div class="card bg-light">
+  <div class="card-header text-muted border-bottom-0 font_geo large_font"> მომხმარებლის ბარათი </div>
+  <div class="card-body pt-0">
+    <div class="row">
+      <div class="col-7">
+        <h2 class="lead font_geo medium_font"><b> {{ firstName }} </b></h2>
+        <h2 class="lead font_geo medium_font"><b> {{ lastName }} </b></h2>
+        <p *ngIf="storeName" class="text-muted font_geo small_font"><b>ფილიალი: </b> {{ storeName }} </p>
+        <p *ngIf="storeName" class="text-muted font_geo small_font"><b>პოზიცია: </b> {{ position }} </p>
+        <p *ngIf="!storeName" class="text-muted font_geo small_font"><b style="color: red;"> ადმინისტრაცია </b> </p>
+      </div>
+      <div class="col-5 text-center">
+        <img [src]="avatarIMG" alt="" class="img-circle img-fluid">
+      </div>
+    </div>
+  </div>
+  <div class="card-footer font_geo">
+    <div class="text-right align-items">
+      <!-- <a href="javascript:void(null);" class="btn btn-sm bg-teal">
+        <i class="fas fa-comments"></i>
+      </a> -->
+      <a (click)="openProfile()" href="javascript:void(null);" class="btn btn-sm btn-primary medium_font">
+        <i class="fas fa-user"></i> პროფილის ნახვა
+      </a>
+    </div>
+  </div>
+</div>

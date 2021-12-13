@@ -1,0 +1,49 @@
+@import'../../../../assets/css/tooltip.scss';
+
+.initial{
+    position: relative;
+    z-index: 1;
+    &:hover{
+        z-index: 33;
+    }
+}
+th{
+    position: relative;
+    z-index: 2;
+}
+.name{
+    cursor: pointer;
+}
+
+.action{
+    width: 25px;
+    height: 25px;
+    background-image: url('../../../../assets/img/action.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.option {
+    display: inline-block;
+    margin: 3px;
+    width: 25px;
+    height: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+
+    &.bin{
+        background-image: url('../../../../assets/img/bin-1.svg');
+        &:hover{
+            background-image: url('../../../../assets/img/bin-2.svg');
+        }
+    }
+    
+    &.edit{
+        background-image: url('../../../../assets/img/edit-1.svg');
+        &:hover{
+            background-image: url('../../../../assets/img/edit-2.svg');
+        }
+    }
+}

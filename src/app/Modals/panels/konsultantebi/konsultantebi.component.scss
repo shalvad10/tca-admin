@@ -1,0 +1,138 @@
+
+    @import'../../../../assets/css/tooltip.scss';
+
+
+    .cont {
+        background:olive;
+        width: 450px;
+        height: 400px;
+        .head {
+            height: 20%;
+        }
+        .middle {
+            height: 80%;
+            .initial{
+                position: relative;
+                z-index: 1;
+                &:hover{
+                    z-index: 33;
+                }
+            }
+            th{
+                position: relative;
+                z-index: 2;
+            }
+            .name{
+                cursor: pointer;
+            }
+        
+            .action{
+                width: 25px;
+                height: 25px;
+                background-image: url('../../../../assets/img/action.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            .option {
+                display: inline-block;
+                margin: 3px;
+                width: 25px;
+                height: 25px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                cursor: pointer;
+        
+                &.bin{
+                    background-image: url('../../../../assets/img/bin-1.svg');
+                    &:hover{
+                        background-image: url('../../../../assets/img/bin-2.svg');
+                    }
+                }
+                
+                &.edit{
+                    background-image: url('../../../../assets/img/edit-1.svg');
+                    &:hover{
+                        background-image: url('../../../../assets/img/edit-2.svg');
+                    }
+                }
+            }
+        }
+    }
+    .card-header {
+        position: relative;
+        .close {
+            position: absolute;
+            right: 5px;
+            right: 10px;
+            top: 11px;
+            width: 20px;
+            height: 20px;
+            background-image: url('../../../../assets/img/close-2.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 80%;
+        }
+    }
+    .card-primary {
+        height: 100%;
+        overflow-y: hidden;
+    }
+    .card-body {
+        height: calc(100% - 50px);
+        .tab-content{
+            height: 100%;
+        }
+    }
+    .tab-pane {
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    #profile-tab {
+        .content{
+            width: 400px;
+            height: 200px;
+            background-color: white;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            .row{
+                width: 100%;
+                flex: 1;
+                padding: 20px;
+                &.btnRow{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    .btn{
+                        width: 40%;
+                        line-height: 55px;
+                        margin: 0px 5%;
+                    }
+                }
+            }
+            .select{
+                width: 100%;
+                height: 55px;
+            }
+            .action{
+                font-size: 16px;
+                color: red;
+            }
+        }
+    }
+
+
+
+    .dropdown {
+        width: 100%;
+    }
+    ::ng-deep .ng-dropdown-panel {
+        margin-top: 50px !important;
+    }

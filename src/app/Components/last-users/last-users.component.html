@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header font_geo">
+    <h3 class="card-title large_font"> ბოლოს ავტორიზებული მომხმარებლები</h3>
+  </div>
+  <div class="card-body p-0">
+    <ul class="users-list clearfix font_geo">
+      <li *ngFor="let item of Activities">
+        <img [src]="avatar(item.avatar)" alt="User Image">
+        <a class="users-list-name small_font" href="javascript:void(null);"> {{ item.user }}</a>
+        <span class="users-list-date small_font">{{ item.date }}</span>
+      </li>
+    </ul>
+    <!-- /.users-list -->
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer text-center font_geo small_font">
+    <a href="javascript::" (click)="seeAllUsers()"> ყველა მომხმარებელი </a>
+  </div>
+  <!-- /.card-footer -->
+</div>
+<!--/.card -->

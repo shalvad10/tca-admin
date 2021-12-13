@@ -1,0 +1,22 @@
+<div class="card-body table-responsive p-0" [ngStyle]="{'height': tableHeight}">
+  <table class="table table-hover table-head-fixed text-nowrap">
+    <thead style="z-index: 2;">
+      <tr>
+        <th> შტრიხკოდი </th>
+        <th> დასახელება </th>
+        <th> კომპანია </th>
+        <th> <div class="action"></div> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dt of data">
+        <td> {{ dt.identificationCode }} </td>
+        <td> {{ dt.name }} </td>
+        <td> {{ companyName }} </td>
+        <td>
+          <!-- <div class="option bin" (click)="delete(dt.id)"></div> -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

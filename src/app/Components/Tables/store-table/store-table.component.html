@@ -1,0 +1,30 @@
+<div class="card-body table-responsive p-0" [ngStyle]="{'height': tableHeight}">
+  <table class="table table-hover table-head-fixed text-nowrap">
+    <thead style="z-index: 2;">
+      <tr>
+        <th *ngFor="let row of tableRows"> {{ row }} </th>
+        <th> <div class="action"></div> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of tableData">
+      <!-- <tr *ngFor="let data of tableData"> -->
+        <td> {{ data.id }} </td>
+        <td [attr.data-tooltip]="tooltipText('საიდენტიფიკაციო კოდი')"> {{ data.identificationCode }} </td>
+        <td class="name" (click)="openStore(data.id)"> {{ data.name }} </td>
+        <td> {{ data.location }} </td>
+        <td> {{ data.mail }} </td>
+        <td> {{ data.phone }} </td>
+        <!-- <td class="initial" [attr.data-tooltip]="tooltipText(data)">
+          <div class="progress progress-xs">
+            <div class="progress-bar" [ngClass]="getStatus(data)" [ngStyle]="{width: getStyle(data)}"></div>
+          </div>
+        </td> -->
+        <td>
+          <div class="option bin" (click)="delete(data.id, data.name)"></div>
+          <div class="option edit" (click)="edit(data.id)"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

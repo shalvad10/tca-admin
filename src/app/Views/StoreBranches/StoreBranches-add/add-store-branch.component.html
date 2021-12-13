@@ -1,0 +1,48 @@
+<app-universal-view>
+    <div class="row" style="padding-top: 15px;">
+        <div class="col-10 offset-1">
+            <div class="card card-light">
+              <div class="card-header">
+                <h3 class="card-title font_geo large_font">ფილიალის დამატება</h3>
+              </div>
+                <div class="card-body">
+                    <div class="form-group font_geo medium_font">
+                      <label>საიდენტიფიკაციო კოდი</label>
+                      <input type="text" class="form-control" placeholder="საიდენტიფიკაციო კოდი" [(ngModel)]="IDCode">
+                      <span class="validation" *ngIf="!(IDCode.length > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        შეიყვანეთ ფილიალის საიდენტიფიკაციო კოდი.
+                      </span>
+                    </div>
+                    <div class="form-group font_geo medium_font">
+                      <label>სახელი</label>
+                      <input type="text" class="form-control" placeholder="ფილიალის დასახელება" [(ngModel)]="name">
+                      <span class="validation" *ngIf="!(name.length > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        შეიყვანეთ ფილიალის სახელი.
+                      </span>
+                    </div>
+                    <div class="form-group font_geo medium_font">
+                      <label>მისამართი</label>
+                      <input type="text" class="form-control" placeholder="ფილიალის მისამართი" [(ngModel)]="lct">
+                      <span class="validation" *ngIf="!(lct.length > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        შეიყვანეთ ფილიალის მისამართი.
+                      </span>
+                    </div>
+                    <div class="form-group font_geo medium_font">
+                      <label>მაღაზია</label>                   
+                      <ng-select [items]="stores" bindLabel="name"  bindValue="id"  [(ngModel)]="selectedStoreID"></ng-select>
+                      <span class="validation" *ngIf="!(selectedStoreID > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        აირჩიეთ მაღაზია.
+                      </span>
+                    </div>
+                </div>
+              <div class="card-footer">
+                <button type="button" [ngClass]="{'disabled': !(IDCode.length > 0 && name.length > 0 && lct.length > 0) && showWarnings}" class="btn btn-primary font_geo small_font" (click)="id == undefined ? send() : edit()"> {{ text }} </button>
+              </div>
+            </div>
+        </div>
+    </div>
+  </app-universal-view>

@@ -1,0 +1,32 @@
+<app-universal-view>
+    <div class="row" style="padding-top: 15px;">
+        <div class="col-10 offset-1">
+            <div class="card card-light">
+              <div class="card-header">
+                <h3 class="card-title font_geo large_font">სექციის დამატება</h3>
+              </div>
+              <!-- <form role="form"> -->
+                <div class="card-body">
+                    <div class="form-group font_geo medium_font">
+                      <label>სახელი</label>
+                      <input type="text" class="form-control small_font" placeholder="სექციის დასახელება" [(ngModel)]="sectionName">
+                    </div>
+                    <span class="validation" *ngIf="!(sectionName.length > 0) && showWarnings">
+                      <i class="fas fa-exclamation"></i>
+                      შეიყვანეთ სექციის დასახელება.
+                    </span>
+                    <!-- <div class="form-group font_geo medium_font">
+                      <label>პასუხისმგებელი პირები</label>
+                      <select multiple class="form-control small_font" (change)="selectUsers($event)">
+                        <option *ngFor="let user of users" [value]="user.id" [selected]="selectedUsers.includes(user.id.toString())"> {{ user.name }}</option>
+                      </select>
+                    </div> -->
+                </div>
+              <!-- </form> -->
+              <div class="card-footer">
+                <button type="button" [ngClass]="{'disabled': !(sectionName.length > 0 ) && showWarnings}" class="btn btn-primary font_geo small_font" (click)="addSection()"> დამატება </button>
+              </div>
+            </div>
+        </div>
+    </div>
+  </app-universal-view>

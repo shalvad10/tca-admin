@@ -1,0 +1,17 @@
+@import'../../../../assets/css/tooltip.scss';
+
+.btn{
+    margin: 3px;
+}
+
+.name {
+    cursor: pointer;
+}
+
+th{
+    position: relative;
+    z-index: 2;
+}
+.form-control{
+    width: 200px;
+}

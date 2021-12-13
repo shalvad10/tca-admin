@@ -1,0 +1,48 @@
+<app-universal-view>
+    <div class="container-fluid customContainer">
+        <div class="row">
+            <div *ngFor="let box of infoBoxses" class="col-12 col-sm-6 col-md-3">
+                <app-info-box
+                [title]="box.title"
+                [content]="box.content"
+                [icon]="box.icon"
+                [type]="box.type"
+                ></app-info-box>
+            </div>
+        </div>
+        <div class="row">
+            <!-- <div class="col-9">
+                <app-statistic-chart *ngIf="chart1.show" [labels]="chart1.labels" [data]="chart1.data"></app-statistic-chart>
+            </div> -->
+            <div class="col-3">
+                <app-info-panel
+                *ngFor="let item of warningItems"
+                [item]="item"
+                ></app-info-panel>
+            </div>
+        </div>
+        <div class="row">
+            <div class="item col-12" [ngClass]="!reduceStores?'col-md-12':'col-md-8'">
+                <div class="card">
+                    <div class="card-header border-transparent">
+                        <h3 class="card-title font_geo large_font"> ფილიალების სია </h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <!-- <app-store-attendance-table [data]="data" (openDetails)="openDetails($event)"></app-store-attendance-table> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 item" *ngIf="showUsers">
+                <div class="card">                    
+                    <div class="card-header border-transparent">
+                        <h3 class="card-title font_geo large_font"> მომხმარებლების სია </h3>
+                        <div class="close" (click)="removeList()"></div>
+                    </div>
+                    <div class="card-body p-0">
+                        <app-user-log-table [data]="users" [avatars]="avatars"></app-user-log-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-universal-view>

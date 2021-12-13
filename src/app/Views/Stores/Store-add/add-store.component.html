@@ -1,0 +1,66 @@
+<app-universal-view>
+    <div class="row" style="padding-top: 15px;">
+        <div class="col-10 offset-1">
+            <div class="card card-light">
+              <div class="card-header">
+                <h3 class="card-title font_geo large_font"> მაღაზიის რეგისტრაცია </h3>
+              </div>
+                <div class="card-body">
+                    <div class="form-group font_geo medium_font">
+                      <label>საიდენტიფიკაციო კოდი</label>
+                      <input type="text" class="form-control" placeholder="საიდენტიფიკაციო კოდი" [(ngModel)]="IDCode">
+                      <span class="validation" *ngIf="!(IDCode.length > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        შეიყვანეთ მაღაზიის საიდენტიფიკაციო კოდი.
+                      </span>
+                    </div>
+                    <div class="form-group font_geo medium_font">
+                      <label>სახელი</label>
+                      <input type="text" class="form-control" placeholder="მაღაზიის დასახელება" [(ngModel)]="name">
+                      <span class="validation" *ngIf="!(name.length > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        შეიყვანეთ მაღაზიის სახელი.
+                      </span>
+                    </div>
+                    <div class="form-group font_geo medium_font">
+                      <label for="exampleInputEmail1">ელ.ფოსტა</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" [(ngModel)]="eMail">
+                      </div>
+                      <span class="validation" *ngIf="!(eMail.length > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        შეიყვანეთ მომხმარებლის ელექტრონული ფოსტა.
+                      </span>
+                    </div>
+                    <div class="form-group font_geo medium_font">
+                      <label>საკონტაქტო ნომერი:</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+                        </div>
+                        <input type="tel" class="form-control" [(ngModel)]="mobileNumber">
+                      </div>
+                      <span class="validation" *ngIf="!(mobileNumber > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        შეიყვანეთ მომხმარებლის ტელეფონის ნომერი.
+                      </span>
+                    </div>
+                    <div class="form-group font_geo medium_font">
+                      <label>მისამართი</label>
+                      <input type="text" class="form-control" placeholder="მაღაზიის მისამართი" [(ngModel)]="lct">
+                      <span class="validation" *ngIf="!(lct.length > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        შეიყვანეთ მაღაზიის მისამართი.
+                      </span>
+                    </div>
+                </div>
+              <div class="card-footer">
+                <button type="button" [ngClass]="{'disabled': !(IDCode.length > 0 && name.length > 0 && lct.length > 0 && eMail.length > 0 && mobileNumber > 0) && showWarnings}" class="btn btn-primary font_geo small_font" (click)="id == undefined ? send() : edit()"> {{ text }} </button>
+              </div>
+            </div>
+        </div>
+    </div>
+  </app-universal-view>

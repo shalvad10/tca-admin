@@ -1,0 +1,80 @@
+<app-universal-view *ngIf="data">
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <section class="content">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title font_geo medium_font">ფილიალის დეტალები</h3>
+              </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-12 order-2">
+                            <div class="row custom-margin">
+                              <div class="col-12 col-sm-3">
+                                  <div class="info-box bg-light">
+                                    <div class="info-box-content">
+                                      <span class="info-box-text text-center text-muted">თანამშრომლების რაოდენობა</span>
+                                      <span class="info-box-number text-center text-muted mb-0"> {{ employeeCount }}</span>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-12 col-sm-3">
+                                  <div class="info-box bg-light">
+                                    <div class="info-box-content">
+                                      <span class="info-box-text text-center text-muted">პროდუქცია</span>
+                                      <span class="info-box-number text-center text-muted mb-0">5</span>
+                                    </div>
+                                  </div>
+                              </div>
+                                <div class="col-12 col-sm-3">
+                                    <div class="info-box bg-light">
+                                      <div class="info-box-content">
+                                        <span class="info-box-text text-center text-muted">ამოღებული პროდუქცია</span>
+                                        <span class="info-box-number text-center text-muted mb-0">18</span>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-3">
+                                    <div class="info-box bg-light">
+                                      <div class="info-box-content">
+                                        <span class="info-box-text text-center text-muted">ახალი დამატებული</span>
+                                        <span class="info-box-number text-center text-muted mb-0">13</span>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row custom-margin">
+                              <div class="col-6">
+                                  <span class="font_geo large_font"> შეტანილი პროდუქცია </span>
+                                  <app-products-small-table [data]="tableData"></app-products-small-table>
+                              </div>
+                              <div class="col-6">
+                                <div class="colHeader">
+                                  <span class="font_geo large_font"> თანამშრომლები </span>
+                                  <div class="addBtn btn btn-success font_geo small_font" (click)="addUsertoStore()">თანამშრომლის რეგისტრაცია</div>
+                                </div>
+                                  <app-user-table [data]="data.users"></app-user-table>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-12 order-1">
+                            <h3 class="text-primary font_geo"><i class="fas fa-store-alt"></i> {{ data.store.name }} - {{ data.name }} </h3>
+                            <br>
+                            <div class="text-muted">
+                              <p class="text-sm font_geo"> მისამართი:
+                                <b class="d-block">{{ data.location }}</b>
+                              </p>
+                              <p class="text-sm font_geo">საკონტაქტო:
+                                <b class="d-block">Tony Chicken</b>
+                              </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</app-universal-view>

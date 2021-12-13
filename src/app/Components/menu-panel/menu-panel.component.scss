@@ -1,0 +1,11 @@
+.user-panel{
+    .info{
+        height: 34px;
+        line-height: 34px;
+    }
+}
+.nav-link{
+    &.disabled {
+        color: #794040 !important;
+    }
+}

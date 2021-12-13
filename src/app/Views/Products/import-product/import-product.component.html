@@ -1,0 +1,81 @@
+<app-universal-view>
+    <div class="row" style="padding-top: 15px;">
+        <div class="col-10 offset-1">
+            <div class="card card-light">
+              <div class="card-header">
+                <h3 class="card-title font_geo large_font">პროდუქტის დამატება</h3>
+              </div>
+              <!-- <form role="form"> -->
+                <div class="card-body">
+                  <div class="form-group font_geo medium_font">
+                    <label>პროდუქტი</label>
+                    <ng-select [items]="products" bindLabel="name"  bindValue="id" [(ngModel)]="selectedProductID"></ng-select>
+                    <span class="validation" *ngIf="!(selectedProductID > 0) && showWarnings">
+                      <i class="fas fa-exclamation"></i>
+                      აირჩიეთ სასურველი პროდუქცია.
+                    </span>
+                  </div>
+                  <div class="form-group font_geo medium_font">
+                    <label>გამოშვების თარიღი:</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                      </div>
+                      <!-- <input type="date" class="form-control" [(ngModel)]="startDate"> -->
+                      <ngx-datepicker class="form-control" [(ngModel)]="startDate" [options]="options"></ngx-datepicker>
+                    </div>
+                    <span class="validation" *ngIf="!(startDate) && showWarnings">
+                      <i class="fas fa-exclamation"></i>
+                      შეიყვანეთ გამოშვების თარიღი.
+                    </span>
+                  </div>
+                  <div class="form-group font_geo medium_font">
+                    <label>ვადის გასვლის თარიღი:</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                      </div>
+                      <!-- <input type="date" class="form-control" [(ngModel)]="endDate">   -->
+                      <ngx-datepicker class="form-control" [(ngModel)]="endDate" [options]="options"></ngx-datepicker>
+                    </div>
+                    <span class="validation" *ngIf="!(endDate) && showWarnings">
+                      <i class="fas fa-exclamation"></i>
+                      შეიყვანეთ ვადის გასვლის თარიღი.
+                    </span>
+                  </div>
+                  <div class="form-group font_geo medium_font" [attr.data-tooltip]="tooltipText">
+                    <label> გაფრთხილების ინტერვალი </label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"> დღე </span>
+                      </div>
+                      <input type="text" class="form-control" placeholder="რამდენი დღით ადრე უნდა იქნეს კომპანია გაფრთხილებული?" [(ngModel)]="days">
+                    </div>
+                  </div> 
+                  <div class="form-group font_geo medium_font">
+                    <label> რაოდენობა </label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="რაოდენობა" [(ngModel)]="quantity">
+                    </div>
+                    <span class="validation" *ngIf="!(quantity > 0) && showWarnings">
+                      <i class="fas fa-exclamation"></i>
+                      შეიყვანეთ პროდუქციის რაოდენობა.
+                    </span>
+                  </div>
+                  <div class="form-group font_geo medium_font">
+                    <label>სექცია</label>                   
+                    <ng-select [items]="sections" bindLabel="name"  bindValue="id"  [(ngModel)]="selectedSectionID"></ng-select>
+                    <span class="validation" *ngIf="!(selectedSectionID > 0) && showWarnings">
+                      <i class="fas fa-exclamation"></i>
+                      აირჩიეთ სექცია.
+                    </span>
+                  </div>
+                </div>
+              <!-- </form> -->
+              <div class="card-footer">
+                <button type="button" [ngClass]="{'disabled': !isValidated && showWarnings}" class="btn btn-primary font_geo small_font" (click)="send()"> დამატება </button>
+              </div>
+            </div>
+        </div>
+    </div>
+  </app-universal-view>

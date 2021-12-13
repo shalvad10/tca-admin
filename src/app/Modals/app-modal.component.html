@@ -1,0 +1,18 @@
+<div class="modal">
+  <div>
+    <div class="header" *ngIf="false">
+      <div class="icon">
+        <div class="icon-image" ></div>
+      </div>
+      <div class="title uppercase" *ngIf="title.length>0"> SATAURI </div>
+      <div class="close"></div>
+    </div>
+    <div class="content">
+      <modal-info           *ngIf="modal.name == 'info'"          [modalParams]='modal'  (onAction)="act($event)"  ></modal-info>
+      <modal-confirm        *ngIf="modal.name == 'confirm'"       [modalParams]='modal'  (onAction)="act($event)"  ></modal-confirm>
+      <modal-deletion       *ngIf="modal.name == 'removeProduct'" [modalParams]='modal'  (onAction)="act($event)"  ></modal-deletion>
+      <modal-add-user       *ngIf="modal.name == 'addUser'"       [modalParams]='modal'  (onAction)="act($event)"  ></modal-add-user>
+      <modal-konsultantebi  *ngIf="modal.name == 'konsultantebi'" [modalParams]='modal'                            ></modal-konsultantebi>
+    </div>
+  </div>
+</div>

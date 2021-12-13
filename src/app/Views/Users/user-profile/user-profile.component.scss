@@ -1,0 +1,13 @@
+.nav-item{
+    cursor: pointer;
+    &.disabled{
+        cursor: default;
+    }
+}
+
+.timeline {
+    margin: 0 !important;
+    &::before {
+        top: -20px !important;
+    }
+}

@@ -1,0 +1,15 @@
+<app-universal-view>
+  <div class="container-fluid">
+    <section class="content" *ngIf="dataLoaded">
+        <div class="card card-solid">
+          <div class="card-body pb-0">
+            <div class="row d-flex align-items-stretch">
+                <div class="col-12 table">
+                    <app-company-table *ngIf="dataLoaded" [data]="companies" ></app-company-table>
+                </div>
+            </div>
+          </div>
+        </div>  
+      </section>
+  </div>
+</app-universal-view>

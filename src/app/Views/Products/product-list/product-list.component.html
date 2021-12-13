@@ -1,0 +1,24 @@
+<app-universal-view *ngIf="dataLoaded">
+    <div class="container-fluid">
+        <div class="row card">
+            <div class="col-12 filterCol" *ngIf="isStore">
+                <div class="filterBtn" (click)="toggleFilter()"></div>
+                <div class="printBtn" (click)="printPage()"></div>
+                <div class="filterBlock" *ngIf="openFilter">
+                    <div class="items">
+                        <div class="item font_geo small_font">
+                            <input type="checkbox" name="isWarning" id="isWarning" [(ngModel)]="filterOptions.isWarning">
+                            <span>საჭიროებს ქმედებას</span>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="btn btn-primary btn-small font_geo small_font" (click)="doFilter()"> გაფილტვრა </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 table">
+                <app-products-table id="tablerecords" [data]="products" [storeView]="isStore" [height]="height"></app-products-table>
+            </div>
+        </div>
+    </div>
+</app-universal-view>

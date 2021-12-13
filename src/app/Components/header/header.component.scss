@@ -1,0 +1,24 @@
+// @import '../../../assets/css/main.min.css'
+.icon {
+    width: 30px;
+    height: 42px;
+    background-image: url('../../../assets/img/smile.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    &.warning {
+        background-image: url('../../../assets/img/warning.svg');
+    }
+    &.success {
+        background-image: url('../../../assets/img/checked.svg');
+    }
+}
+
+.badge{
+    font-size: .7rem;
+}
+
+.main-header {
+    z-index: 500 !important;
+}

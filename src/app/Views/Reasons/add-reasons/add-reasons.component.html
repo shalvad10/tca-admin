@@ -1,0 +1,39 @@
+<app-universal-view>
+  <div class="row" style="padding-top: 15px;">
+    <div class="col-10 offset-1">
+      <div class="card card-light">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-12">
+              <h3 class="card-title font_geo large_font">პროდუქციის ამოღების მიზეზები</h3>
+            </div>
+          </div>
+        </div>
+        <!-- <form role="form"> -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group font_geo medium_font">
+                  <label>სახელი</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="სახელი" [(ngModel)]="name">
+                  </div>
+                  <span class="validation" *ngIf="!(name.length > 0) && showWarnings">
+                    <i class="fas fa-exclamation"></i>
+                    დასახელება
+                  </span>
+                </div>            
+              </div>
+            </div>
+          </div>
+        <!-- </form> -->
+        <div class="card-footer">
+          <button type="button" [ngClass]="{'disabled': !(name.length > 0 ) && showWarnings}" class="btn btn-primary font_geo small_font" (click)="add()">რეგისტრაცია</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-universal-view>

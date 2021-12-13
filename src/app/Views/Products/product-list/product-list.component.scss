@@ -1,0 +1,92 @@
+.table{
+    padding: 15px 10px;
+}
+.container-fluid {
+    padding: 25px;
+}
+.filterCol{
+    position: relative;
+    .filterBtn{
+        float: right;
+        width: 30px;
+        height: 30px;
+        margin: 10px;
+        background-image: url('../../../../assets/img/filter-1.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        cursor: pointer;
+        &:hover{
+            background-image: url('../../../../assets/img/filter-3.svg');
+        }
+    }
+    .printBtn {
+        float: right;
+        width: 30px;
+        height: 30px;
+        margin: 10px;
+        background-image: url('../../../../assets/img/print-1.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        cursor: pointer;
+        &:hover{
+            background-image: url('../../../../assets/img/print-2.svg');
+        }
+    }
+    .filterBlock {
+        position: absolute;
+        z-index: 333;
+        right: 0;
+        bottom: -190px;
+        width: 300px;
+        height: 170px;
+        border-radius: 10px;
+        background-color: #343a40;
+        border: 1px solid #007bff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .items{
+            flex-grow: 1;
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            .item {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+
+                span{
+                    color: #fff;
+                }
+                input{
+                    margin: 5px;
+                    width: 15px;
+                    height: 15px;
+                }
+            }
+        }
+        .buttons{
+            height: 40px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &::before{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-top: 1px solid #007bff;
+            border-left: 1px solid #007bff;
+            background-color: #343a40;
+            top: -10px;
+            right: 0;
+            margin-right: 25px;
+            content: '';
+            transform: rotate(45deg);
+        }
+    }
+}

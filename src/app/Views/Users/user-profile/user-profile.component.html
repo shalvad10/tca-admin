@@ -1,0 +1,171 @@
+<app-universal-view *ngIf="user !== null">
+  <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                       [src]="user.avatar"
+                       alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center font_geo large_font"> {{ user.fullName }} </h3>
+
+                <p class="text-muted text-center font_geo medium_font"> {{ user.userName }} </p>
+
+                <!-- <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                    <b>Followers</b> <a class="float-right">1,322</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Following</b> <a class="float-right">543</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Friends</b> <a class="float-right">13,287</a>
+                  </li>
+                </ul> -->
+
+
+                  <!-- <a [ngClass]="{'disabled': user.userName !== authorisedUser}" href="javascript:void(null);" (click)="editUser()" class="btn btn-primary btn-block font_geo small_font" ><b> რედაქტირება </b></a>
+                  <a [ngClass]="{'disabled': user.userName !== authorisedUser}" href="javascript:void(null);" (click)="editUser(user.id)" class="btn btn-danger btn-block font_geo small_font" ><b> წაშლა </b></a>
+                     -->
+                  <a href="javascript:void(null);" (click)="editUser()" class="btn btn-primary btn-block font_geo small_font disabled" ><b> რედაქტირება </b></a>
+                  <a href="javascript:void(null);" (click)="deleteUser()" class="btn btn-danger btn-block font_geo small_font disabled" ><b> წაშლა </b></a>
+                  
+              </div>
+            </div>
+            
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title font_geo large_font"> მოკლე ინფორმაცია </h3>
+              </div>
+              
+              <div class="card-body">
+                <div *ngIf="user.position && user.store">
+                  <strong>
+                    <i class="fas fa-address-card"></i>
+                    <span class="font_geo medium_font" style="margin-left: 3px;">პოზიცია</span>
+                  </strong>
+                  <p class="text-muted font_geo small_font"> {{ user.position }} </p>
+                  <hr>
+                </div>
+                <div *ngIf="user.position && user.store">
+                  <strong>
+                    <i class="fas fa-store-alt"></i>
+                    <span class="font_geo medium_font" style="margin-left: 3px;">ფილიალი</span>
+                  </strong>
+                  <p class="text-muted font_geo small_font"> {{ user.store }} </p>
+                </div>
+               
+              <!-- 
+                <hr>
+                <strong><i class="fas fa-clipboard-list"></i><span class="font_geo medium_font" style="margin-left: 3px;">სექცია</span></strong>
+
+                <p class="text-muted font_geo small_font"> სექციის სახელი </p>
+              -->
+              </div>
+              
+            </div>
+            
+          </div>
+          
+          <div class="col-md-9">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item disabled"><a class="nav-link font_geo medium_font disabled" (click)="selectTab('timeline')" [ngClass]="{'active': selectedTab == 'timeline'}" data-toggle="tab"> ისტორია </a></li>
+                  <!-- <li class="nav-item"><a class="nav-link" (click)="selectTab('settings')" [ngClass]="{'active': selectedTab == 'settings'}" data-toggle="tab">Settings</a></li> -->
+                </ul>
+              </div>
+              
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane"[ngClass]="{'active': selectedTab == 'timeline'}" id="timeline">
+                    <!-- The timeline -->
+                    <div class="timeline timeline-inverse" *ngFor="let item of activitiesData">
+                      <!-- timeline time label -->
+                      <div class="time-label">
+                        <span class="bg-secondary font_geo small_font">
+                          {{ item.date }}
+                        </span>
+                      </div>
+                      <!-- /.timeline-label -->
+                      <!-- timeline item -->
+
+                      <div *ngFor="let dt of item.data">
+                        <!-- <i class="fas fa-plus bg-success"></i> -->
+                        <i [ngClass]="{'fa fa-plus bg-success': dt.action.type == 'create', 'fas fa-minus bg-danger': dt.action.type == 'delete','far fa-dot-circle bg-primary': dt.action.type == 'update'}"></i>
+
+                        <div class="timeline-item font_geo medium_font">
+                          <span class="time"><i class="far fa-clock"></i> {{dt.time}}</span>
+                          <div class="timeline-body font_geo small_font"> {{dt.action.text}} </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane" [ngClass]="{'active': selectedTab == 'settings'}" id="settings">
+                    <form class="form-horizontal">
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control" id="inputName" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+                        <div class="col-sm-10">
+                          <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+</app-universal-view>

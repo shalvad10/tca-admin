@@ -1,0 +1,20 @@
+<div class="card-body table-responsive p-0" [ngStyle]="{'height': tableHeight}">
+  <table class="table table-hover table-head-fixed text-nowrap">
+    <thead style="z-index: 2;">
+      <tr>
+        <th> დასახელება </th>
+        <th> თანამშრომელი </th>
+        <th> <div class="action"></div> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="item" *ngFor="let data of data.stores.allStores" [ngClass]="{'selected': data.selected}">
+        <td> {{ data.magazine.name }} - {{ data.name }} </td>
+        <td> {{ data.numberOfEmployees }} </td>
+        <td>
+          <div class="option details" (click)="details(data.id)"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
