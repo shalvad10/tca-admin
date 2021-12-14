@@ -28,7 +28,7 @@ export class StoreBranchesTableComponent implements OnInit {
   ngOnInit() { }
 
   openStore(id: any) {
-    this.router.navigateByUrl(`/store/${id}`);
+    this.router.navigateByUrl(`/storeBranch/${id}`);
   }
   
   tooltipText(data: any) {
@@ -38,13 +38,13 @@ export class StoreBranchesTableComponent implements OnInit {
   delete(id, name) {
     const modal = 'confirm';
     appData.data.modal.currentModal = modal;
-    appData.data.modal.modals[modal].typeID     = AppEnums.main.store;
+    appData.data.modal.modals[modal].typeID     = AppEnums.main.storeBranch;
     appData.data.modal.modals[modal].targetName = name;
     appData.data.modal.modals[modal].targetID   = id;
   }
 
   edit(id) {
-    this.router.navigate(['store/add'], { queryParams: { id: id } });
+    this.router.navigate(['storeBranch/add'], { queryParams: { id: id } });
   }
 
 }

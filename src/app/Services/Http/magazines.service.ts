@@ -26,11 +26,11 @@ export class MagazinesService {
     return this.http.get(`${environment.connectionURL}/Magazines`, {headers: headers});
   }
 
-  create(idCode: string, name: string, token: string) {
+  create(idCode: string, name: string, email: string, contactNumber: string, address: string, token: string) {
     let headerSettings = {};
     headerSettings['Authorization'] = `Bearer ${token}`;
     let headers = new HttpHeaders(headerSettings);
-    return this.http.post(`${environment.connectionURL}/Magazines`, { identificationCode: idCode, name: name}, {headers: headers});
+    return this.http.post(`${environment.connectionURL}/Magazines`, { identificationCode: idCode, name: name, email: email, contactNumber: contactNumber, address: address}, {headers: headers});
   }
 
   delete(id: number, token: string) {
@@ -47,10 +47,10 @@ export class MagazinesService {
     return this.http.get(`${environment.connectionURL}/Magazines/${id}`, {headers: headers});
   }
 
-  edit(idCode: string, name: string, id: number, lct: string, token: string) {
+  edit(id: number, idCode: string, name: string, email: string, contactNumber: string, address: string, token: string) {
     let headerSettings = {};
     headerSettings['Authorization'] = `Bearer ${token}`;
     let headers = new HttpHeaders(headerSettings);
-    return this.http.put(`${environment.connectionURL}/Magazines`, { identificationCode: idCode, location: lct, name: name, id: id, magazineId: environment.id}, {headers: headers});
+    return this.http.put(`${environment.connectionURL}/Magazines`, { id: id, identificationCode: idCode, name: name, email: email, contactNumber: contactNumber, address: address}, {headers: headers});
   }
 }

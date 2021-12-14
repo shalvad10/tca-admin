@@ -41,9 +41,9 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
                         </div>
-                        <input type="tel" class="form-control" [(ngModel)]="mobileNumber">
+                        <input type="tel" class="form-control" [(ngModel)]="contactNumber">
                       </div>
-                      <span class="validation" *ngIf="!(mobileNumber > 0) && showWarnings">
+                      <span class="validation" *ngIf="!(contactNumber > 0) && showWarnings">
                         <i class="fas fa-exclamation"></i>
                         შეიყვანეთ მომხმარებლის ტელეფონის ნომერი.
                       </span>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
               <div class="card-footer">
-                <button type="button" [ngClass]="{'disabled': !(IDCode.length > 0 && name.length > 0 && lct.length > 0 && eMail.length > 0 && mobileNumber > 0) && showWarnings}" class="btn btn-primary font_geo small_font" (click)="id == undefined ? send() : edit()"> {{ text }} </button>
+                <button type="button" [ngClass]="{'disabled': !(IDCode.length > 0 && name.length > 0 && lct.length > 0 && eMail.length > 0 && contactNumber > 0) && showWarnings}" class="btn btn-primary font_geo small_font" (click)="id == undefined ? send() : edit()"> {{ text }} </button>
               </div>
             </div>
         </div>

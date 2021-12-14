@@ -5,8 +5,10 @@
         <th> ID </th>
         <th> საიდ.კოდი </th>
         <th> სახელი </th>
-        <th> მისამართი </th>
         <th> მაღაზია </th>
+        <th> მისამართი </th>
+        <th> ელ.ფოსტა </th>
+        <th> ტელეფონი </th>
         <th> <div class="action"></div> </th>
       </tr>
     </thead>
@@ -16,8 +18,10 @@
         <td> {{ data.id }} </td>
         <td [attr.data-tooltip]="tooltipText('საიდენტიფიკაციო კოდი')"> {{ data.identificationCode }} </td>
         <td class="name" (click)="openStore(data.id)"> {{ data.name }} </td>
-        <td> {{ data.location }} </td>
         <td> {{ data.magazine.name }} </td>
+        <td> {{ data.location }} </td>
+        <td> {{ data.email }} </td>
+        <td> {{ data.contactNumber }} </td>
         <td>
           <div class="option bin" (click)="delete(data.id, data.name)"></div>
           <div class="option edit" (click)="edit(data.id)"></div>

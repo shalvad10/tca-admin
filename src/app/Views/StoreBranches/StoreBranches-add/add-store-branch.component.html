@@ -23,6 +23,32 @@
                       </span>
                     </div>
                     <div class="form-group font_geo medium_font">
+                      <label for="exampleInputEmail1">ელ.ფოსტა</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" [(ngModel)]="eMail">
+                      </div>
+                      <span class="validation" *ngIf="!(eMail.length > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        შეიყვანეთ მომხმარებლის ელექტრონული ფოსტა.
+                      </span>
+                    </div>
+                    <div class="form-group font_geo medium_font">
+                      <label>საკონტაქტო ნომერი:</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+                        </div>
+                        <input type="tel" class="form-control" [(ngModel)]="contactNumber">
+                      </div>
+                      <span class="validation" *ngIf="!(contactNumber > 0) && showWarnings">
+                        <i class="fas fa-exclamation"></i>
+                        შეიყვანეთ მომხმარებლის ტელეფონის ნომერი.
+                      </span>
+                    </div>
+                    <div class="form-group font_geo medium_font">
                       <label>მისამართი</label>
                       <input type="text" class="form-control" placeholder="ფილიალის მისამართი" [(ngModel)]="lct">
                       <span class="validation" *ngIf="!(lct.length > 0) && showWarnings">

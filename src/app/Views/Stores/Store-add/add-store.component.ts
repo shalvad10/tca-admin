@@ -16,7 +16,7 @@ export class AddStoreComponent implements OnInit {
   name          : string  = '';
   lct           : string  = '';
   id            : number;
-  mobileNumber  : number;
+  contactNumber : number;
   eMail         : string = '';
   showWarnings  : boolean = false;
 
@@ -31,9 +31,11 @@ export class AddStoreComponent implements OnInit {
     if (this.activatedRoute.snapshot.queryParams.id) {
       this.id = Number.parseInt(this.activatedRoute.snapshot.queryParams.id);
       this.magazineService.getByID(this.id, SharedMethods.getToken(appData)).subscribe( (dt: any) => {
-        this.IDCode   = dt.identificationCode;
-        this.name     = dt.name;
-        this.lct = dt.location;
+        this.IDCode       = dt.identificationCode;
+        this.name         = dt.name;
+        this.lct          = dt.address;
+        this.eMail        = dt.email;
+        this.contactNumber = dt.contactNumber;
       });
     }
   }
@@ -43,9 +45,9 @@ export class AddStoreComponent implements OnInit {
   }
   
   send() {
-    if (this.IDCode.length > 0 && this.name.length > 0 && this.lct.length > 0) {
+    if (this.IDCode.length > 0 && this.name.length > 0 && this.lct.length > 0 && this.eMail.length > 0 && this.contactNumber > 0) {
       SharedMethods.loader(true);
-      this.magazineService.create(this.IDCode, this.name, SharedMethods.getToken(appData)).subscribe( (dt: any) => {
+      this.magazineService.create(this.IDCode, this.name, this.eMail, this.contactNumber.toString(), this.lct, SharedMethods.getToken(appData)).subscribe( (dt: any) => {
         console.warn(dt);
         if ( dt) {
           appData.data.stores.allStores.push(dt);
@@ -60,8 +62,8 @@ export class AddStoreComponent implements OnInit {
   }
   
   edit() {
-    if (this.IDCode.length > 0 && this.name.length > 0 && this.lct.length > 0) {
-      this.magazineService.edit(this.IDCode, this.name, this.id, this.lct, SharedMethods.getToken(appData)).subscribe( (dt: any) => {
+    if (this.IDCode.length > 0 && this.name.length > 0 && this.lct.length > 0 && this.eMail.length > 0 && this.contactNumber > 0) {
+      this.magazineService.edit(this.id, this.IDCode, this.name, this.eMail, this.contactNumber.toString(), this.lct, SharedMethods.getToken(appData)).subscribe( (dt: any) => {
         console.warn(dt);
         if ( dt ) {
           appData.data.stores.allStores = appData.data.stores.allStores.filter( st => st.id !== dt.id);

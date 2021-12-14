@@ -5,7 +5,8 @@ export const AppEnums = {
         store           : 3,
         company         : 4,
         section         : 5,
-        reason          : 6
+        reason          : 6,
+        storeBranch     : 7
     },
     userPositions: {
         HeadOffice      : 1,

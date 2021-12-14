@@ -10,6 +10,7 @@ import { UserService } from 'src/app/Services/Http/user.service';
 import { ProductsService } from 'src/app/Services/Http/products.service';
 import { SectionsService } from 'src/app/Services/Http/sections.service';
 import { ReasonsService } from 'src/app/Services/Http/reasons.service';
+import { MagazineBranchesService } from 'src/app/Services/Http/magazine-branches.service';
 
 @Component({
   selector: 'modal-confirm',
@@ -20,13 +21,14 @@ export class ConfirmComponent implements OnInit {
 
   @Input() modalParams: any;
   constructor(
-    private toastr          : ToastrService,
-    private userService     : UserService,
-    private sectionsService : SectionsService,
-    private magazineService : MagazinesService,
-    private companyService  : CompanyService,
-    private productsService : ProductsService,
-    private reasonsService  : ReasonsService
+    private toastr                : ToastrService,
+    private userService           : UserService,
+    private sectionsService       : SectionsService,
+    private magazineService       : MagazinesService,
+    private companyService        : CompanyService,
+    private productsService       : ProductsService,
+    private reasonsService        : ReasonsService,
+    private magazineBranchService : MagazineBranchesService
     ) { }
 
   ngOnInit(): void { }
@@ -59,11 +61,12 @@ export class ConfirmComponent implements OnInit {
   confirm() {
     SharedMethods.loader(true);
     switch(this.modalParams.typeID) {
-      case AppEnums.main.product  : { this.deleteProduct(this.modalParams.targetID);  break;  }
-      case AppEnums.main.user     : { this.deleteUser();                              break;  }
-      case AppEnums.main.store    : { this.deleteStore(this.modalParams.targetID);    break;  }
-      case AppEnums.main.company  : { this.deleteCompany(this.modalParams.targetID);  break;  }
-      case AppEnums.main.section  : { this.deleteSection(this.modalParams.targetID);  break;  }
+      case AppEnums.main.product      : { this.deleteProduct(this.modalParams.targetID);      break;  }
+      case AppEnums.main.user         : { this.deleteUser();                                  break;  }
+      case AppEnums.main.store        : { this.deleteStore(this.modalParams.targetID);        break;  }
+      case AppEnums.main.storeBranch  : { this.deleteStoreBranch(this.modalParams.targetID);  break;  }
+      case AppEnums.main.company      : { this.deleteCompany(this.modalParams.targetID);      break;  }
+      case AppEnums.main.section      : { this.deleteSection(this.modalParams.targetID);      break;  }
     }
   }
 
@@ -132,6 +135,17 @@ export class ConfirmComponent implements OnInit {
 
   deleteStore(id)   {    
     this.magazineService.delete(id, SharedMethods.getToken(appData)).subscribe( (dt: any) => {
+      if (SharedMethods.isSuccess(dt)) {
+        SharedMethods.loader(false);
+        appData.data.modal.currentModal = '';
+        SharedMethods.alertNotification(this.toastr, 'success', { text: `ოპერაცია წარმატებით განხორციელდა`});
+        appData.data.stores.allStores = appData.data.stores.allStores.filter( store => store.id !== id);
+      }
+    });
+  }
+
+  deleteStoreBranch(id)   {    
+    this.magazineBranchService.delete(id, SharedMethods.getToken(appData)).subscribe( (dt: any) => {
       if (SharedMethods.isSuccess(dt)) {
         SharedMethods.loader(false);
         appData.data.modal.currentModal = '';

@@ -16,6 +16,8 @@ export class AddStoreBranchComponent implements OnInit {
   IDCode          : string  = '';
   name            : string  = '';
   lct             : string  = '';
+  eMail           : string  = '';
+  contactNumber   : number;
   id              : number;
   showWarnings    : boolean = false;
   selectedStoreID : number;
@@ -35,11 +37,14 @@ export class AddStoreBranchComponent implements OnInit {
       })
     }
     if (this.activatedRoute.snapshot.queryParams.id) {
-      this.id = Number.parseInt(this.activatedRoute.snapshot.queryParams.id);
+      this.id = Number.parseInt(this.activatedRoute.snapshot.queryParams.id);      
       this.magazineBranchService.getByID(this.id, SharedMethods.getToken(appData)).subscribe( (dt: any) => {
-        this.IDCode   = dt.identificationCode;
-        this.name     = dt.name;
-        this.lct = dt.location;
+        this.IDCode           = dt.identificationCode;
+        this.name             = dt.name;
+        this.lct              = dt.location;
+        this.eMail            = dt.email ? dt.email : '';
+        this.contactNumber    = dt.contactNumber;
+        this.selectedStoreID  = dt.magazine.id;
       });
     }
   }
@@ -51,13 +56,13 @@ export class AddStoreBranchComponent implements OnInit {
   send() {
     if (this.IDCode.length > 0 && this.name.length > 0 && this.lct.length > 0) {
       SharedMethods.loader(true);
-      this.magazineBranchService.create(this.IDCode, this.name, this.lct, this.selectedStoreID, SharedMethods.getToken(appData)).subscribe( (dt: any) => {
+      this.magazineBranchService.create(this.IDCode, this.name, this.lct, this.selectedStoreID, this.eMail, this.contactNumber.toString(), SharedMethods.getToken(appData)).subscribe( (dt: any) => {
         console.warn(dt);
         if ( dt) {
-          appData.data.stores.allStores.push(dt);
+          appData.data.stores.branches.allBranches.push(dt);
           SharedMethods.loader(false);
           SharedMethods.alertNotification(this.toastr,'success', { text: `ოპერაცია წარმატებით განხორციელდა`})
-          this.router.navigateByUrl('store');
+          this.router.navigateByUrl('storeBranch');
         }
       });
     } else {
@@ -67,14 +72,14 @@ export class AddStoreBranchComponent implements OnInit {
   
   edit() {
     if (this.IDCode.length > 0 && this.name.length > 0 && this.lct.length > 0) {
-      this.magazineBranchService.edit(this.IDCode, this.name, this.id, this.lct, SharedMethods.getToken(appData)).subscribe( (dt: any) => {
+      this.magazineBranchService.edit(this.IDCode, this.name, this.id, this.lct, this.selectedStoreID, this.eMail, this.contactNumber.toString(), SharedMethods.getToken(appData)).subscribe( (dt: any) => {
         console.warn(dt);
         if ( dt ) {
-          appData.data.stores.allStores = appData.data.stores.allStores.filter( st => st.id !== dt.id);
+          appData.data.stores.branches.allBranches = appData.data.stores.branches.allBranches.filter( st => st.id !== dt.id);
           setTimeout( () => {
-            appData.data.stores.allStores.push(dt);
+            appData.data.stores.branches.allBranches.push(dt);
             SharedMethods.alertNotification(this.toastr,'success', { text: `ოპერაცია წარმატებით განხორციელდა`})
-            this.router.navigateByUrl('store');
+            this.router.navigateByUrl('storeBranch');
           }, 1);
         }
       });
