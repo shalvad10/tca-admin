@@ -43,6 +43,8 @@ export class MenuPanelComponent implements OnInit {
       case 'addCompany'       : { this.router.navigateByUrl('/companies/add');    break;  }
       case 'ReasonsList'      : { this.router.navigateByUrl('/reasons');          break;  }
       case 'addReason'        : { this.router.navigateByUrl('/reasons/add');      break;  }
+      case 'userRolesList'    : { this.router.navigateByUrl('/userRoles');        break;  }
+      case 'addUserRoles'     : { this.router.navigateByUrl('/userRoles/add');    break;  }
     }
   }
 

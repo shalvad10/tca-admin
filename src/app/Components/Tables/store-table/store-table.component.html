@@ -8,18 +8,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of tableData">
-      <!-- <tr *ngFor="let data of tableData"> -->
         <td> {{ data.id }} </td>
         <td [attr.data-tooltip]="tooltipText('საიდენტიფიკაციო კოდი')"> {{ data.identificationCode }} </td>
         <td class="name" (click)="openStore(data.id)"> {{ data.name }} </td>
         <td> {{ data.address }} </td>
         <td> {{ data.email }} </td>
         <td> {{ data.contactNumber }} </td>
-        <!-- <td class="initial" [attr.data-tooltip]="tooltipText(data)">
-          <div class="progress progress-xs">
-            <div class="progress-bar" [ngClass]="getStatus(data)" [ngStyle]="{width: getStyle(data)}"></div>
-          </div>
-        </td> -->
         <td>
           <div class="option bin" (click)="delete(data.id, data.name)"></div>
           <div class="option edit" (click)="edit(data.id)"></div>

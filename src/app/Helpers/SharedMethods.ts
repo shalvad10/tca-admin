@@ -28,6 +28,15 @@ export default class SharedMethods {
         return usersArr;
     }
 
+    public static getPositions(service: any) {        
+        service.getPositions(this.getToken(appData)).subscribe((data:any) => {
+            data.forEach( position => {
+                position.status = position.isActive ? 'აქტიური' : 'პასიური';
+            });
+            appData.data.users.positions = data;
+        });
+    }
+
     public static addDaysToDate(date, days) {
         let newDT = new Date(date);
         newDT.setDate(newDT.getDate() + days);
@@ -230,7 +239,9 @@ export default class SharedMethods {
     }
 
     public static setInfoBoxes(dt: any, infoBoxes: any, type: string, fun: any) {
-        this.loader(true);
+        if (appData.data.loading == false ) {
+            this.loader(true);
+        }
         fun.subscribe((data: any) => {
             console.warn(data, type);
             switch(type){
@@ -240,13 +251,11 @@ export default class SharedMethods {
                     break;
                 }
                 case 'users': {
-                    console.warn(data);
                     dt.data.users.data = data.data;
                     this.loader(false);
                     break;
                 }
                 case 'companies': {
-                    console.warn(data);
                     dt.data.companies.data = data.data;
                     this.loader(false);
                     break;

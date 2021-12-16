@@ -20,17 +20,13 @@ export class StoreListComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    console.warn(appData.data.stores,);
-    if (appData.data.stores.allStores.length == 0) {
-      this.magazineService.getAll(SharedMethods.getToken(appData)).subscribe((data: any) => {
-        if ( SharedMethods.isSuccess(data) ) {
-          this.tableData.data = data.data;
-          appData.data.stores.allStores = data.data;
-        }
-      });
-    } else {
-      this.tableData.data = appData.data.stores.allStores;
-    }
+    this.magazineService.getAll(SharedMethods.getToken(appData)).subscribe((data: any) => {
+      if ( SharedMethods.isSuccess(data) ) {
+        this.tableData.data = data.data;
+        appData.data.stores.allStores = data.data;
+        SharedMethods.loader(false);
+      }
+    });
   }
 
   public generateSingleProduct(product) {
@@ -46,7 +42,7 @@ export class StoreListComponent implements OnInit {
     return tmpProduct;
   }
 
-  // get height() { return window.innerHeight - 160; }
+  get height() { return window.innerHeight - 300; }
 
 }
 

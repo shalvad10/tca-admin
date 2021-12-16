@@ -38,7 +38,7 @@ export class StoreBranchListComponent implements OnInit {
     return tmpProduct;
   }
 
-  get height() { return window.innerHeight - 160; }
+  get height() { return window.innerHeight - 300; }
 
 }
 

@@ -7,7 +7,9 @@ import { AddUserComponent } from './Users/add-user/add-user.component';
 import { UserListComponent } from './Users/user-list/user-list.component';
 import { UserProfileComponent } from './Users/user-profile/user-profile.component';
 import { LoginComponent } from './Authentication/login/login.component';
-import { LockScreenComponent } from './Authentication/lock-screen/lock-screen.component';
+
+import { AddUserRolesComponent } from './UserRoles/add-user-roles/add-user-roles.component';
+import { UserRolesListComponent } from './UserRoles/user-roles-list/user-roles-list.component';
 
 import { AddProductComponent } from './Products/add-product/add-product.component';
 import { ImportProductComponent } from './Products/import-product/import-product.component';
@@ -43,12 +45,13 @@ import { ReasonsListComponent } from './Reasons/reasons-list/reasons-list.compon
 @NgModule({
   imports: [NgSelectModule, DatepickerModule,  FormsModule, CommonModule, ComponentsModule ],
   declarations: [
-    LockScreenComponent,
     ProductDetailedComponent,
     UserListComponent,
     UserProfileComponent,
+    UserRolesListComponent,
     ProductListComponent,
     AddUserComponent,
+    AddUserRolesComponent,
     AddProductComponent,
     ImportProductComponent,
     SectionsListComponent,
@@ -69,7 +72,6 @@ import { ReasonsListComponent } from './Reasons/reasons-list/reasons-list.compon
     AddReasonsComponent
   ],
   exports: [
-    LockScreenComponent,
     ProductDetailedComponent,
     LoginComponent,
     AddCompanyComponent,

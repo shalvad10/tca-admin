@@ -25,6 +25,8 @@ import { StoreBranchListComponent } from './Views/StoreBranches/StoreBranches-li
 import { StoreBranchDetailedComponent } from './Views/StoreBranches/StoreBranches-detailed/store-branch-detailed.component';
 import { ReasonsListComponent } from './Views/Reasons/reasons-list/reasons-list.component';
 import { AddReasonsComponent } from './Views/Reasons/add-reasons/add-reasons.component';
+import { UserRolesListComponent } from './Views/UserRoles/user-roles-list/user-roles-list.component';
+import { AddUserRolesComponent } from './Views/UserRoles/add-user-roles/add-user-roles.component';
 
 
 const routes: Routes = [
@@ -34,6 +36,8 @@ const routes: Routes = [
   { path: 'products/import',  component: ImportProductComponent       },
   { path: 'products/logs',    component: ProductLogsComponent         },
   { path: 'products/:id',     component: ProductDetailedComponent     },
+  { path: 'userRoles',        component: UserRolesListComponent       },
+  { path: 'userRoles/add',    component: AddUserRolesComponent        },
   { path: 'users',            component: UserListComponent            },
   { path: 'users/register',   component: AddUserComponent             },
   { path: 'users/auth',       component: LoginComponent               },

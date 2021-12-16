@@ -113,10 +113,6 @@ export class UserService {
     let headerSettings = {};
     headerSettings['Authorization'] = `Bearer ${token}`;
     let headers = new HttpHeaders(headerSettings);
-    console.warn({
-      userId: userID,
-      responsiblePersonsGroupId: sectionID
-    });
     return this.http.post(`${environment.connectionURL}/ResponsiblePersonsForProducts`, [{
       userId: userID,
       responsiblePersonsGroupId: sectionID
@@ -129,5 +125,40 @@ export class UserService {
     let headers = new HttpHeaders(headerSettings);
     return this.http.delete(`${environment.connectionURL}/ResponsiblePersonsForProducts/?UserId=${UserId}&GroupId=${GroupId}`, {headers: headers});
     
+  }
+
+  getPositions(token: string){
+    let headerSettings = {};
+    headerSettings['Authorization'] = `Bearer ${token}`;
+    let headers = new HttpHeaders(headerSettings);
+    return this.http.get(`${environment.connectionURL}/Users/Positions`, {headers: headers});
+  }
+
+  getSinglePosition(id: number, token: string){
+    let headerSettings = {};
+    headerSettings['Authorization'] = `Bearer ${token}`;
+    let headers = new HttpHeaders(headerSettings);
+    return this.http.get(`${environment.connectionURL}/Users/PositionGet/${id}`, {headers: headers});
+  }
+
+  createPosition(name: string, isActive: boolean, token: string) {
+    let headerSettings = {};
+    headerSettings['Authorization'] = `Bearer ${token}`;
+    let headers = new HttpHeaders(headerSettings);
+    return this.http.post(`${environment.connectionURL}/Users/PositionCreate`,{name: name, isActive: isActive}, {headers: headers});
+  }
+
+  updatePosition(roleID: number, name: string, isActive: boolean, token: string) {
+    let headerSettings = {};
+    headerSettings['Authorization'] = `Bearer ${token}`;
+    let headers = new HttpHeaders(headerSettings);
+    return this.http.put(`${environment.connectionURL}/Users/PositionUpdate`, {id: roleID, name : name, isActive : isActive}, {headers: headers});
+  }
+
+  removePosition(roleID: number, token: string){
+    let headerSettings = {};
+    headerSettings['Authorization'] = `Bearer ${token}`;
+    let headers = new HttpHeaders(headerSettings);
+    return this.http.delete(`${environment.connectionURL}/Users/PositionRemove/${roleID}`, {headers: headers});
   }
 }

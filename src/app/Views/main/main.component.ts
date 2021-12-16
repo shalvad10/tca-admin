@@ -55,6 +55,23 @@ export class MainComponent implements OnInit {
     this.reduceStores = false;
     this.showUsers = false;
   }
+
+  chart1 = {
+    show: true,
+    labels: ['იან','თებ','მარ','აპრ','მაი','ივნ','ივლ','აგვ','სექ','ოქტ','ნოე','დეკ'],
+    data: [
+      {
+        name: 'მიღებული',
+        data: [0,0,0,5,42,12,3,8,9,12,6,24],
+        color: '#00a300'
+      },
+      {
+        name: 'ამოღებული',
+        data: [0,0,0,32,6,19,31,13,9,17,3,7],
+        color: '#d90000'
+      }
+    ]
+  };
   
 
   infoBoxses = [

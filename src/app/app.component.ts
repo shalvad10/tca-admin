@@ -52,11 +52,7 @@ export class AppComponent implements OnInit{
       this.appLoaded = true;
       SharedMethods.loader(false);
       this.router.navigateByUrl('/users/auth');
-    } else if (authorizedUser.password.length < 1) {
-      this.appLoaded = true;
-      SharedMethods.loader(false);
-      this.router.navigateByUrl('/locked');
-    }else {
+    } else {
       this.userService.getByID( authorizedUser.id, authorizedUser.token ).subscribe( (dt: any) => {
         if ( dt ) {
           console.warn(dt);
@@ -74,7 +70,7 @@ export class AppComponent implements OnInit{
           };
           appData.data.view = dt.positionId === null ? 'headView' : 'storeView';
           this.appLoaded = true;
-          SharedMethods.loader(false);
+          // SharedMethods.loader(false);
         }
       }, (err: any) => {
         if (err.statusText === 'Unauthorized') {

@@ -6,7 +6,8 @@ export const AppEnums = {
         company         : 4,
         section         : 5,
         reason          : 6,
-        storeBranch     : 7
+        storeBranch     : 7,
+        userRole        : 8
     },
     userPositions: {
         HeadOffice      : 1,
@@ -25,6 +26,7 @@ export const AppEnums = {
         user_DELETE     : 23,
         user_DFSTORE    : 24,
         user_DFSECTION  : 25,
+        user_DELROLE    : 26,
         // ფილიალის ენუმები
         store_ADD       : 31,
         store_EDIT      : 32,

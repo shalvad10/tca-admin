@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppEnums } from 'src/app/Enums/appEnums';
-import SharedMethods from 'src/app/Helpers/SharedMethods';
 import appData from 'src/app/Services/Data/AppData';
 import { MagazinesService } from 'src/app/Services/Http/magazines.service';
 
@@ -24,6 +23,7 @@ export class StoreTableComponent implements OnInit {
   }
 
   @Input() set height(val: any){
+    console.warn(val)
     this.tableHeight = val+'px';
   }
 

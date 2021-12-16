@@ -41,6 +41,7 @@ export class ConfirmComponent implements OnInit {
       case 4 : { return 'კომპანიის';  }
       case 5 : { return 'სექციის';  }
       case 6 : { return 'მიზეზის';  }
+      case 8 : { return 'პოზიციის';  }
     }
   }
 
@@ -63,6 +64,7 @@ export class ConfirmComponent implements OnInit {
     switch(this.modalParams.typeID) {
       case AppEnums.main.product      : { this.deleteProduct(this.modalParams.targetID);      break;  }
       case AppEnums.main.user         : { this.deleteUser();                                  break;  }
+      case AppEnums.main.userRole     : { this.deleteUser();                                  break;  }
       case AppEnums.main.store        : { this.deleteStore(this.modalParams.targetID);        break;  }
       case AppEnums.main.storeBranch  : { this.deleteStoreBranch(this.modalParams.targetID);  break;  }
       case AppEnums.main.company      : { this.deleteCompany(this.modalParams.targetID);      break;  }
@@ -126,6 +128,17 @@ export class ConfirmComponent implements OnInit {
             SharedMethods.loader(false);
             appData.data.modal.currentModal = '';
             SharedMethods.getSectionsWithData(appData, this.productsService);
+          }
+        });
+        break;
+      }
+      case AppEnums.activityID.user_DELROLE : {
+        this.userService.removePosition(this.modalParams.data.roleID, SharedMethods.getToken(appData)).subscribe((dt: any) => {
+          console.warn(dt);
+          if (SharedMethods.isSuccess(dt)) {
+            SharedMethods.getPositions(this.userService);
+            SharedMethods.loader(false);
+            appData.data.modal.currentModal = '';
           }
         });
         break;

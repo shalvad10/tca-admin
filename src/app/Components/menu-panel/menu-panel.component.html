@@ -46,8 +46,8 @@
               </li>
               <li class="nav-item has-treeview font_geo fs_md" id="storeBranches" [ngClass]="{'menu-open': isActive('storeBranch/add') || isActive('storeBranch')}">
                 <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('storeBranches')">
-                  <i *ngIf="!isActive('stores')" class="far fa-circle nav-icon"></i>
-                  <i *ngIf="isActive('stores')" class="far fa-dot-circle nav-icon"></i>
+                  <i *ngIf="!isActive('storeBranch')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('storeBranch')" class="far fa-dot-circle nav-icon"></i>
                   <p> ფილიალები <i class="fas fa-angle-left right"></i> </p>
                 </a>
                 <ul class="nav nav-treeview">
@@ -123,13 +123,10 @@
             </ul>
           </li> -->
           <li class="nav-header font_geo fs_lg">სტაფი</li>
-          <li class="nav-item has-treeview menu-open font_geo fs_md" id="dashboard" [ngClass]="{'menu-open': isActive('users/register') || isActive('users')}">
+          <li class="nav-item has-treeview menu-open font_geo fs_md" id="dashboard" [ngClass]="{'menu-open': isActive('users/register') || isActive('users') || isActive('userRoles/add') || isActive('userRoles')}">
             <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('dashboard')">
               <i class="nav-icon fas fa-users"></i>
-              <p>
-                თანამშრომლები
-                <i class="right fas fa-angle-left"></i>
-              </p>
+              <p> თანამშრომლები <i class="right fas fa-angle-left"></i> </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
@@ -145,6 +142,30 @@
                   <i *ngIf="isActive('users')" class="far fa-dot-circle nav-icon"></i>
                   <p>სია</p>
                 </a>
+              </li>
+              
+              <li class="nav-item has-treeview font_geo fs_md" id="userRoles" [ngClass]="{'menu-open': isActive('userRoles/add') || isActive('userRoles')}">
+                <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('userRoles')">
+                  <i *ngIf="!isActive('userRoles')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('userRoles')" class="far fa-dot-circle nav-icon"></i>
+                  <p> პოზიციები <i class="fas fa-angle-left right"></i> </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="javascript:void(null);" (click)="changeRoute('addUserRoles')" class="nav-link" [ngClass]="{'active': isActive('userRoles/add')}">
+                      <i *ngIf="!isActive('userRoles/add')" class="far fa-circle nav-icon"></i>
+                      <i *ngIf="isActive('userRoles/add')" class="far fa-dot-circle nav-icon"></i>
+                      <p>დამატება</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="javascript:void(null);" (click)="changeRoute('userRolesList')" class="nav-link" [ngClass]="{'active': isActive('userRoles')}">
+                      <i *ngIf="!isActive('userRoles')" class="far fa-circle nav-icon"></i>
+                      <i *ngIf="isActive('userRoles')" class="far fa-dot-circle nav-icon"></i>
+                      <p>სია</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>

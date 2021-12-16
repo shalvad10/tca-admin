@@ -30,7 +30,8 @@ class AppData {
         users: {
             pages: [],
             active: 0,
-            data: []
+            data: [],
+            positions: []
         },
         stores: {
             selectedStore: undefined,
