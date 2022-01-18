@@ -15,6 +15,9 @@ export class UserListComponent implements OnInit {
   constructor( private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getUserRoles(SharedMethods.getToken(appData)).subscribe( (data: any) => {
+      console.error(data);
+    });
     console.warn(this.users);
     if ( this.users.length == 0) {
       if (SharedMethods.isStoreView()) {

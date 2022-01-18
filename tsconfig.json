@@ -8,6 +8,15 @@
   "files": [],
   "emitDecoratorMetadata": true,
   "experimentalDecorators": true,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "outDir": "./lib",
+    "rootDir": "./src",
+    "importHelpers": true,
+    "strict": true,
+    "experimentalDecorators": true
+  },
   "references": [
     {
       "path": "./tsconfig.app.json"

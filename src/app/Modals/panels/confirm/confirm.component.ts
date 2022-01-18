@@ -133,11 +133,14 @@ export class ConfirmComponent implements OnInit {
         break;
       }
       case AppEnums.activityID.user_DELROLE : {
-        this.userService.removePosition(this.modalParams.data.roleID, SharedMethods.getToken(appData)).subscribe((dt: any) => {
+        this.userService.deleteUserRole(this.modalParams.data.roleID, SharedMethods.getToken(appData)).subscribe((dt: any) => {
           console.warn(dt);
           if (SharedMethods.isSuccess(dt)) {
-            SharedMethods.getPositions(this.userService);
-            SharedMethods.loader(false);
+            SharedMethods.alertNotification(this.toastr, 'success', { text: `ოპერაცია წარმატებით განხორციელდა`});
+            SharedMethods.getUsedRoles(this.userService,0, (data: any) => {
+              appData.data.users.usedRolesList = data;
+              SharedMethods.loader(false);
+            });
             appData.data.modal.currentModal = '';
           }
         });

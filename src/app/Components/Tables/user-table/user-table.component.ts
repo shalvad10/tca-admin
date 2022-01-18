@@ -29,8 +29,10 @@ export class UserTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sectionID = appData.data.modal.modals[appData.data.modal.currentModal].sectionID;
-    console.warn(this.sectionID);
+    if (appData.data.modal.modals[appData.data.modal.currentModal]) {
+      this.sectionID = appData.data.modal.modals[appData.data.modal.currentModal].sectionID;
+      console.warn(this.sectionID);
+    }
   }
 
   delete(id) {

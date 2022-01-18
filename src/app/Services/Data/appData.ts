@@ -2,7 +2,7 @@ import { appData } from "../Interfaces/appData";
 class AppData {
     data = {
         loading: false,
-        view: '', // headView, storeView
+        view: '',
         currentUser: {
             id                : 0,
             avatarID          : 0,
@@ -31,7 +31,8 @@ class AppData {
             pages: [],
             active: 0,
             data: [],
-            positions: []
+            positions: [],
+            usedRolesList: []
         },
         stores: {
             selectedStore: undefined,
@@ -150,7 +151,8 @@ class AppData {
                 },
                 info: {
                     name: 'info',
-                    actionID: 0
+                    actionID: 0,
+                    text: null
                 },
                 removeProduct: {
                     name: 'removeProduct',

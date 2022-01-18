@@ -1,0 +1,14 @@
+input[type=date]::-webkit-inner-spin-button, input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+    
+}
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+::ng-deep .ng-dropdown-panel {
+    margin-top: 60px !important;
+}

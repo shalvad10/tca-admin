@@ -198,6 +198,12 @@ export default class SharedMethods {
         
     }
 
+    public static getUsedRoles(service: any,id: number,callback: any) {
+        service.getUsersWithRoles(id,this.getToken(appData)).subscribe((data:any) => {
+            callback(data);
+        });
+    }
+
     public static getCompanies(data: any, service: any, callback: any) {
         service.getAll(this.getToken(data)).subscribe( (dt: any) => {
           callback(dt);

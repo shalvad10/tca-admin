@@ -21,10 +21,14 @@ export class InfoComponent extends ComponentBase implements OnInit {
     return SharedMethods.getAction(this.modalParams.actionID);
   }
 
+  public get text() {
+    return this.modalParams.text;
+  }
+
   ngOnInit(): void { 
-    // setTimeout( () => {
-    //   appData.data.modal.currentModal = '';
-    // }, 2500);
+    setTimeout( () => {
+      appData.data.modal.currentModal = '';
+    }, 3000);
   }
 
 }

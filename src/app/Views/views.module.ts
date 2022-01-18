@@ -11,6 +11,9 @@ import { LoginComponent } from './Authentication/login/login.component';
 import { AddUserRolesComponent } from './UserRoles/add-user-roles/add-user-roles.component';
 import { UserRolesListComponent } from './UserRoles/user-roles-list/user-roles-list.component';
 
+import { AddUserPositionsComponent } from './UserPositions/add-user-positions/add-user-positions.component';
+import { UserPositionsListComponent } from './UserPositions/user-positions-list/user-positions-list.component';
+
 import { AddProductComponent } from './Products/add-product/add-product.component';
 import { ImportProductComponent } from './Products/import-product/import-product.component';
 import { ProductListComponent } from './Products/product-list/product-list.component';
@@ -51,6 +54,8 @@ import { ReasonsListComponent } from './Reasons/reasons-list/reasons-list.compon
     UserRolesListComponent,
     ProductListComponent,
     AddUserComponent,
+    AddUserPositionsComponent,
+    UserPositionsListComponent,
     AddUserRolesComponent,
     AddProductComponent,
     ImportProductComponent,

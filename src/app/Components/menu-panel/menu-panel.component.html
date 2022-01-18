@@ -123,10 +123,10 @@
             </ul>
           </li> -->
           <li class="nav-header font_geo fs_lg">სტაფი</li>
-          <li class="nav-item has-treeview menu-open font_geo fs_md" id="dashboard" [ngClass]="{'menu-open': isActive('users/register') || isActive('users') || isActive('userRoles/add') || isActive('userRoles')}">
+          <li class="nav-item has-treeview menu-open font_geo fs_md" id="dashboard" [ngClass]="{'menu-open': isActive('users/register') || isActive('users') || isActive('userPositions/add') || isActive('userPositions') || isActive('userRoles')}">
             <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('dashboard')">
               <i class="nav-icon fas fa-users"></i>
-              <p> თანამშრომლები <i class="right fas fa-angle-left"></i> </p>
+              <p> მომხმარებლები <i class="right fas fa-angle-left"></i> </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
@@ -144,28 +144,35 @@
                 </a>
               </li>
               
-              <li class="nav-item has-treeview font_geo fs_md" id="userRoles" [ngClass]="{'menu-open': isActive('userRoles/add') || isActive('userRoles')}">
-                <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('userRoles')">
-                  <i *ngIf="!isActive('userRoles')" class="far fa-circle nav-icon"></i>
-                  <i *ngIf="isActive('userRoles')" class="far fa-dot-circle nav-icon"></i>
+              <li class="nav-item has-treeview font_geo fs_md" id="userPositions" [ngClass]="{'menu-open': isActive('userPositions/add') || isActive('userPositions')}">
+                <a href="javascript:void(null);" class="nav-link" (click)="dropdownMenu('userPositions')">
+                  <i *ngIf="!isActive('userPositions')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('userPositions')" class="far fa-dot-circle nav-icon"></i>
                   <p> პოზიციები <i class="fas fa-angle-left right"></i> </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="javascript:void(null);" (click)="changeRoute('addUserRoles')" class="nav-link" [ngClass]="{'active': isActive('userRoles/add')}">
-                      <i *ngIf="!isActive('userRoles/add')" class="far fa-circle nav-icon"></i>
-                      <i *ngIf="isActive('userRoles/add')" class="far fa-dot-circle nav-icon"></i>
+                    <a href="javascript:void(null);" (click)="changeRoute('adduserPositions')" class="nav-link" [ngClass]="{'active': isActive('userPositions/add')}">
+                      <i *ngIf="!isActive('userPositions/add')" class="far fa-circle nav-icon"></i>
+                      <i *ngIf="isActive('userPositions/add')" class="far fa-dot-circle nav-icon"></i>
                       <p>დამატება</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="javascript:void(null);" (click)="changeRoute('userRolesList')" class="nav-link" [ngClass]="{'active': isActive('userRoles')}">
-                      <i *ngIf="!isActive('userRoles')" class="far fa-circle nav-icon"></i>
-                      <i *ngIf="isActive('userRoles')" class="far fa-dot-circle nav-icon"></i>
+                    <a href="javascript:void(null);" (click)="changeRoute('userPositionsList')" class="nav-link" [ngClass]="{'active': isActive('userPositions')}">
+                      <i *ngIf="!isActive('userPositions')" class="far fa-circle nav-icon"></i>
+                      <i *ngIf="isActive('userPositions')" class="far fa-dot-circle nav-icon"></i>
                       <p>სია</p>
                     </a>
                   </li>
                 </ul>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:void(null);" (click)="changeRoute('userRolesList')" class="nav-link" [ngClass]="{'active': isActive('users')}">
+                  <i *ngIf="!isActive('userRoles')" class="far fa-circle nav-icon"></i>
+                  <i *ngIf="isActive('userRoles')" class="far fa-dot-circle nav-icon"></i>
+                  <p> როლები</p>
+                </a>
               </li>
             </ul>
           </li>

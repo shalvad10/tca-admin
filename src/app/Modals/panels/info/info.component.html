@@ -1,5 +1,8 @@
 <div class="content">
-    <span class="font_geo small_font">
+    <span class="font_geo small_font" *ngIf="text==null">
         ოპერაცია (<span class="action">{{ actionName }}</span>) წარმატებით განხორციელდა.
+    </span>
+    <span class="font_geo medium_font" *ngIf="text!==null">
+        {{ text }}
     </span>
 </div>

@@ -6,7 +6,6 @@ import { environment } from './../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-
 export class UserService {
 
   constructor(private http: HttpClient) { }
@@ -139,6 +138,34 @@ export class UserService {
     headerSettings['Authorization'] = `Bearer ${token}`;
     let headers = new HttpHeaders(headerSettings);
     return this.http.get(`${environment.connectionURL}/Users/PositionGet/${id}`, {headers: headers});
+  }
+
+  getUserRoles(token: string){
+    let headerSettings = {};
+    headerSettings['Authorization'] = `Bearer ${token}`;
+    let headers = new HttpHeaders(headerSettings);
+    return this.http.get(`${environment.connectionURL}/Users/RoleList`, {headers: headers});
+  }
+
+  setUserRole(userID: number, roleID: number, token: string){
+    let headerSettings = {};
+    headerSettings['Authorization'] = `Bearer ${token}`;
+    let headers = new HttpHeaders(headerSettings);
+    return this.http.post(`${environment.connectionURL}/Users/SetRole`,{userId: userID, roleId: roleID}, {headers: headers});
+  }
+
+  deleteUserRole(usedRoleID: number, token: string){
+    let headerSettings = {};
+    headerSettings['Authorization'] = `Bearer ${token}`;
+    let headers = new HttpHeaders(headerSettings);
+    return this.http.delete(`${environment.connectionURL}/Users/DeleteRole?Id=${usedRoleID}`, {headers: headers});
+  }
+
+  getUsersWithRoles(id:number, token: string){
+    let headerSettings = {};
+    headerSettings['Authorization'] = `Bearer ${token}`;
+    let headers = new HttpHeaders(headerSettings);
+    return this.http.get(`${environment.connectionURL}/Users/UsedRole?userId${id}`, {headers: headers});
   }
 
   createPosition(name: string, isActive: boolean, token: string) {

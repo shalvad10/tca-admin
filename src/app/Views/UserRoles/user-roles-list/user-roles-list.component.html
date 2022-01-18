@@ -3,10 +3,33 @@
     <div class="col-10 offset-1">
       <div class="card card-light">
         <div class="card-header">
-          <h3 class="card-title font_geo large_font"> მომხმარებლის როლების სია </h3>
+          <h3 class="card-title font_geo large_font"> მომხმარებლის როლების მენეჯმენტი </h3>
         </div>
         <div class="card-body">
-          <app-user-roles-table [data]="positions" [height]="height"></app-user-roles-table>
+          <div class="row">
+            <div class="col-8">
+              <div class="form-group font_geo medium_font">
+                <label>მომხმარებელი</label>
+                <ng-select [items]="users" bindLabel="username" bindValue="id" [(ngModel)]="selectedUserID"></ng-select>
+              </div>  
+              <div class="form-group font_geo medium_font">
+                <label>როლი</label>
+                <ng-select [items]="roles" bindLabel="name" bindValue="id" [(ngModel)]="selectedRoleID"></ng-select>
+              </div>            
+            </div>
+            <div class="col-4 custom-btn">
+              <button type="button" class="btn btn-primary font_geo small_font" (click)="setRole()">დამატება</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12">
+                  <app-user-roles-table [data]="usedRolesList" [height]="height"></app-user-roles-table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="card-footer"> </div>
       </div>

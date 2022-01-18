@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { AppEnums } from 'src/app/Enums/appEnums';
 import SharedMethods from 'src/app/Helpers/SharedMethods';
 import appData from 'src/app/Services/Data/AppData';
@@ -18,18 +17,18 @@ export class CompanyTableComponent implements OnInit {
   searchText;
   public tableHeight = '550px';
 
-  constructor( private toastr: ToastrService, private router: Router, private compayService: CompanyService) { }
+  constructor(private router: Router, private compayService: CompanyService) { }
 
   @Input() set data(val: any) {
     this.tableData = [];
     val = val.sort((a,b) => (a.name > b.name) ? 1 : ((b.id > a.id) ? -1 : 0))
-    console.warn(appData.data.products);
+    console.warn(val);
     val.forEach( item => {
       const tmpItem = {
         id: item.id,
         name: item.name,
         code: item.identificationCode,
-        products: item.products.length,
+        products: item.productsCount,
         receivedBack: 0
       };
       this.tableData.push(tmpItem);

@@ -28,12 +28,43 @@ export class UserRolesTableComponent implements OnInit {
   ngOnInit() {
   }
 
+  getBadgeClass(roleName: string): string {
+    let badgeClass = '';
+    switch (roleName) {
+      case 'Admin' : {
+        badgeClass = 'bg-danger';
+        break;
+      }
+      case 'Consultant' : {
+        badgeClass = 'bg-secondary';
+        break;
+      }
+      case 'Manager' : {
+        badgeClass = 'bg-info';
+        break;
+      }
+      case 'Head' : {
+        badgeClass = 'bg-primary';
+        break;
+      }
+      default: {
+        badgeClass = 'bg-secondary';
+        break;
+      }
+    }
+    return badgeClass;
+  }
+
   delete(id) {
     const modal                                           = 'confirm';
     appData.data.modal.currentModal                       = modal;
     appData.data.modal.modals[modal].typeID               = AppEnums.main.user;
     appData.data.modal.modals[modal].activityID           = AppEnums.activityID.user_DELROLE;
     appData.data.modal.modals[modal].data['roleID']       = id;
+  }
+
+  getFullName(user: any) {
+    return `${user.firstName} ${user.lastName}`;
   }
 
   edit(id) {

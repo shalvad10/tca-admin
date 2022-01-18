@@ -22,30 +22,33 @@ export class StoreDetailedComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = Number.parseInt(this.activatedRoute.snapshot.params.id);
-    this.magazineService.getByID(this.id, SharedMethods.getToken(appData)).subscribe( (dt: any) => {
-      if (dt) {
-        appData.data.stores.selectedStore = {
-          id: dt.id,
-          name: dt.name,
-          store: this.getStoreName(dt.magazineId),
-          location: dt.location,
-          idCode: dt.identificationCode,
-          users: []
+    console.warn(this.id);
+    if (this.id !== undefined) {
+      this.magazineService.getByID(this.id, SharedMethods.getToken(appData)).subscribe( (dt: any) => {
+        if (dt) {
+          appData.data.stores.selectedStore = {
+            id: dt.id,
+            name: dt.name,
+            store: this.getStoreName(dt.magazineId),
+            location: dt.location,
+            idCode: dt.identificationCode,
+            users: []
+          }
+          // this.magazineService.getUsers(dt.id, SharedMethods.getToken(appData)).subscribe( (res: any) => {
+          //   let tmpArr = [];
+          //   res.forEach( (el: any) => {
+          //     tmpArr.push({
+          //       id: el.user.id,
+          //       name: `${el.user.firstName} ${el.user.lastName}`,
+          //       role: el.positions.name
+          //     });
+          //   });
+          //   appData.data.stores.selectedStore.users = tmpArr;
+          //   console.warn(appData.data.stores.selectedStore.users);
+          // });
         }
-        // this.magazineService.getUsers(dt.id, SharedMethods.getToken(appData)).subscribe( (res: any) => {
-        //   let tmpArr = [];
-        //   res.forEach( (el: any) => {
-        //     tmpArr.push({
-        //       id: el.user.id,
-        //       name: `${el.user.firstName} ${el.user.lastName}`,
-        //       role: el.positions.name
-        //     });
-        //   });
-        //   appData.data.stores.selectedStore.users = tmpArr;
-        //   console.warn(appData.data.stores.selectedStore.users);
-        // });
-      }
-    });
+      });
+    }
   }
   public get data(): any {
     return appData.data.stores.selectedStore;
@@ -70,9 +73,9 @@ export class StoreDetailedComponent implements OnInit {
   }
   
   addUsertoStore() {
-    const modal = 'addUser';
-    appData.data.modal.currentModal           = modal;
-    appData.data.modal.modals[modal].storeID  = this.id;
-    appData.data.modal.modals[modal].type     = 'store';
+    // const modal = 'addUser';
+    // appData.data.modal.currentModal           = modal;
+    // appData.data.modal.modals[modal].storeID  = this.id;
+    // appData.data.modal.modals[modal].type     = 'store';
   }
 }

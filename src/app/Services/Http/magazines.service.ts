@@ -41,6 +41,7 @@ export class MagazinesService {
   }
 
   getByID(id: number, token: string) {
+    console.warn(id);
     let headerSettings = {};
     headerSettings['Authorization'] = `Bearer ${token}`;
     let headers = new HttpHeaders(headerSettings);

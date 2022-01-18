@@ -3,16 +3,20 @@
     <thead style="z-index: 2;">
       <tr>
         <th> ID </th>
-        <th> სახელი </th>
-        <th> სტატუსი </th>
+        <th> როლი </th>
+        <th> სრული სახელი </th>
+        <th data-tooltip="მომხმარებლის სახელი" data-tooltip-location="left"> მომხ.სახელი </th>
+        <th> მეილი </th>
         <th> <div class="action"></div> </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let data of tableData">
         <td> {{ data.id }} </td>
-        <td> {{ data.name }} </td>
-        <td> {{ data.status }} </td>
+        <td> <span class="badge" [ngClass]="getBadgeClass(data.role.name)">{{ data.role.name }}</span> </td>
+        <td> {{ getFullName(data.user) }} </td>
+        <td> {{ data.user.username }} </td>
+        <td> {{ data.user.email }} </td>
         <td>
           <div class="option bin" (click)="delete(data.id)"></div>
           <div class="option edit" (click)="edit(data.id)"></div>
