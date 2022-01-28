@@ -44,7 +44,7 @@ export class AddUserPositionsComponent implements OnInit {
         if (data) {
           SharedMethods.alertNotification(this.toastr, 'success', { text: 'ოპერაცია წარმატებით შესრულდა'});
           setTimeout(() => {
-            this.router.navigateByUrl('/userRoles');
+            this.router.navigateByUrl('/userPositions');
           }, 500);
         }
       });
@@ -54,7 +54,7 @@ export class AddUserPositionsComponent implements OnInit {
         if (data) {
           SharedMethods.alertNotification(this.toastr, 'success', { text: 'ოპერაცია წარმატებით შესრულდა'});
           setTimeout(() => {
-            this.router.navigateByUrl('/userRoles');
+            this.router.navigateByUrl('/userPositions');
           }, 500);
         }
       });

@@ -82,14 +82,14 @@ export class UserService {
     }, {headers: headers});
   }
 
-  registerToStore(userID: number, storeID: number, token: string) {
+  registerToStore(userID: number, positionID: number, storeID: number, token: string) {
     let headerSettings = {};
     headerSettings['Authorization'] = `Bearer ${token}`;
     let headers = new HttpHeaders(headerSettings);
     return this.http.post(`${environment.connectionURL}/Users/UserReferenceCreate`, {
       userId: userID,
       magazineBranchId: storeID,
-      positionId: 4
+      positionId: positionID
     }, {headers: headers});
   }
   
@@ -165,7 +165,7 @@ export class UserService {
     let headerSettings = {};
     headerSettings['Authorization'] = `Bearer ${token}`;
     let headers = new HttpHeaders(headerSettings);
-    return this.http.get(`${environment.connectionURL}/Users/UsedRole?userId${id}`, {headers: headers});
+    return this.http.get(`${environment.connectionURL}/Users/UsedRole?userId=${id}`, {headers: headers});
   }
 
   createPosition(name: string, isActive: boolean, token: string) {

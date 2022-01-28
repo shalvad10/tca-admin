@@ -29,8 +29,8 @@ export class AddUserComponent implements OnInit {
   showWarnings: boolean = false;
 
   public genders = [
-    { name: 'მდედრობითი', value: 1},
-    { name: 'მდედრობითი', value: 1}
+    { name: 'მამრობითი', value: 1},
+    { name: 'მდედრობითი', value: 2}
   ];
 
   isEdit = false;

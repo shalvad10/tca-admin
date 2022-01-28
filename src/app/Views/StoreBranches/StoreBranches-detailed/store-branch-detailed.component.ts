@@ -45,6 +45,7 @@ export class StoreBranchDetailedComponent implements OnInit {
           console.warn(appData.data.stores.selectedStore.users);
         });
       }
+      SharedMethods.loader(false);
     });
   }
   public get data(): any {

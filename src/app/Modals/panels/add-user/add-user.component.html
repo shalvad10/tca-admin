@@ -4,6 +4,7 @@
             <option *ngFor="let user of users" [value]="user.id"> {{ getUser(user) }} </option>
         </select> -->
         <ng-select [items]="users" bindLabel="name"  bindValue="id" class="dropdown"  [(ngModel)]="selected"></ng-select>
+        <ng-select [items]="positions" bindLabel="name"  bindValue="id" class="dropdown"  [(ngModel)]="selectedPosition"></ng-select>
     </div>
       <div class="row btnRow">
         <div class="btn btn-success font_geo medium_font" (click)="confirm()"> დადასტურება </div>

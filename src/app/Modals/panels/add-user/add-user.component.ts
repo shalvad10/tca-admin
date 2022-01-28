@@ -17,13 +17,18 @@ export class AddUserModal extends ComponentBase implements OnInit {
     super(ref);
   }
 
-  selected = 0;
-  dataLoaded = false;
+  selected          :  number  = 0;
+  selectedPosition  :  number  = 0;
+  dataLoaded        :  boolean = false;
 
   @Input() modalParams: any;
 
   public get users(): any {
     return appData.data.users.data;
+  }
+
+  public get positions(): any {
+    return appData.data.users.positions;
   }
 
   getUser(usr) {
@@ -38,16 +43,19 @@ export class AddUserModal extends ComponentBase implements OnInit {
   }
   
   ngOnInit(): void {
+    SharedMethods.getPositions(this.userService);
     console.warn(this.modalParams);
     if (appData.data.users.data.length == 0) {
       SharedMethods.getUsers(appData,this.userService, (rs: any) => {
         if ( SharedMethods.isSuccess(rs)) {
           appData.data.users.data = rs.data;
           this.refactorData(appData.data.users.data);
+          SharedMethods.loader(false);
         }
       });
     }else {
       this.refactorData(appData.data.users.data);
+      SharedMethods.loader(false);
     }
   }
 
@@ -63,7 +71,7 @@ export class AddUserModal extends ComponentBase implements OnInit {
     const token = SharedMethods.getToken(appData);
     switch (this.modalParams.type) {
       case 'store': {
-        this.userService.registerToStore(this.selected, this.modalParams.storeID, token).subscribe((data: any) => {
+        this.userService.registerToStore(this.selected, this.selectedPosition, this.modalParams.storeID, token).subscribe((data: any) => {
           if (data) {
             const user = this.users.find( usr => usr.id === this.selected);
             this.userService.getUserPosition(data.positionId, token).subscribe( (dt: any) => {

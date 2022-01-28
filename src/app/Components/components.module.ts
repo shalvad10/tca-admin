@@ -14,6 +14,7 @@ import { StatisticChartComponent } from './statistic-chart/statistic-chart.compo
 import { SectionsTableComponent } from './Tables/sections-table/sections-table.component';
 import { UserTableComponent } from './Tables/user-table/user-table.component';
 import { UserRolesTableComponent } from './Tables/user-roles-table/user-roles-table.component';
+import { UserPositionsTableComponent } from './Tables/user-positions-table/user-positions-table.component';
 import { UserLogTableComponent } from './Tables/user-log-table/user-log-table.component';
 import { ProductsTableComponent } from './Tables/products-table/products-table.component';
 import { ProductsLogTableComponent } from './Tables/products-log-table/products-log-table.component';
@@ -52,6 +53,7 @@ import { ReasonsTableComponent } from './Tables/reasons-table/reasons-table.comp
     ProductsLogTableComponent,
     UserTableComponent,
     UserRolesTableComponent,
+    UserPositionsTableComponent,
     ProductsSmallTableComponent,
     StoreAttendanceTableComponent,
     UserLogTableComponent,
@@ -78,6 +80,7 @@ import { ReasonsTableComponent } from './Tables/reasons-table/reasons-table.comp
     ProductsLogTableComponent,
     UserTableComponent,
     UserRolesTableComponent,
+    UserPositionsTableComponent,
     ProductsSmallTableComponent,
     StoreAttendanceTableComponent,
     UserLogTableComponent,

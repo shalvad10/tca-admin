@@ -1,6 +1,6 @@
 .content{
     width: 450px;
-    height: 200px;
+    min-height: 200px;
     background-color: white;
     border-radius: 15px;
     display: flex;
@@ -36,6 +36,7 @@
 
 .dropdown {
     width: 100%;
+    margin: 10px 0px;
 }
 ::ng-deep .ng-dropdown-panel {
     margin-top: 50px !important;
